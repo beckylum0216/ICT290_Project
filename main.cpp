@@ -2359,6 +2359,50 @@ void DisplayMainPosts ()
 		glTranslatef(128.0, 0.0, 0.0);
 		glCallList(52);
 	glPopMatrix();
+
+	//Tutorial 1 Posts
+	step = -1940.0;
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+	glPushMatrix();
+	glTranslatef(step, 0.0, 20880.0);
+	glCallList(18);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(step, 0.0, 21008.0);
+	glCallList(18);
+	glPopMatrix();
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST_2));
+	glPushMatrix();
+	glTranslatef(step, 0.0, 20880.0);
+	glCallList(19);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(step + 128.0, 0.0, 20880.0);
+	glCallList(19);
+	glPopMatrix();
+
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+	glPushMatrix();
+	glTranslatef(step-1600, 0.0, 20880.0);
+	glCallList(18);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(step-1600, 0.0, 21008.0);
+	glCallList(18);
+	glPopMatrix();
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST_2));
+	glPushMatrix();
+	glTranslatef(step-1600, 0.0, 20880.0);
+	glCallList(19);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(step + 128.0-1600, 0.0, 20880.0);
+	glCallList(19);
+	glPopMatrix();
 }
 
 void DrawMainPosts ()
