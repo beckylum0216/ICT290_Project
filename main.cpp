@@ -275,8 +275,8 @@ int i, j, k;
 #define WELCOME						218
 #define EXIT						219
 #define NO_EXIT						222
-
-// 223 Next
+#define THE_BANNER					223
+// 224 Next
 
 
 //--------------------------------------------------------------------------------------
@@ -354,6 +354,7 @@ void DisplayRoof();
 void DisplayStepBricks ();
 void DisplayLights ();
 void DisplayECL ();
+void DisplayBanner();
 
 // calls functions to create display lists (below)
 void CreateTextureList();
@@ -382,6 +383,7 @@ void DrawAngledRoofBeam2 (int listNo, GLdouble x, GLdouble y, GLdouble z, GLdoub
 void DrawStepBricks ();
 void DrawMapExit ();
 void DrawECL ();
+void DrawBanner();
 
 
 void BindBridgeWall(GLint LR);
@@ -1599,6 +1601,13 @@ void CreateTextures()
 	image = tp.LoadTexture("data/thanks.raw", 512, 512);
 	tp.CreateTexture(219, image, 512, 512);
 
+
+	// Tutorial 1 Banner creation
+
+	image = tp.LoadTexture("data/bannerlossy.raw", 1600, 1066);
+	tp.CreateTexture(THE_BANNER, image, 1600, 1066);
+
+
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);	
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
@@ -1629,6 +1638,7 @@ void DrawBackdrop()
 	DisplayRedPosts ();
 	DisplayRoof();
 	DisplayStepBricks ();
+	DisplayBanner();
 	if (lightsOn) DisplayLights ();
 }
 
@@ -2360,7 +2370,9 @@ void DisplayMainPosts ()
 		glCallList(52);
 	glPopMatrix();
 
-	//Tutorial 1 Posts
+	///=====================================================
+	///Tutorial 1 Posts
+	///=====================================================
 	step = -1940.0;
 
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
@@ -2405,6 +2417,10 @@ void DisplayMainPosts ()
 	glPopMatrix();
 }
 
+
+
+
+
 void DrawMainPosts ()
 {
 	tp.CreateDisplayList (XY, 18, 128.0, 256.0, 31740.0, 9995.0, 10105.0, 1.0, 4.48);
@@ -2412,6 +2428,25 @@ void DrawMainPosts ()
 	tp.CreateDisplayList (XY, 51, 128.0, 256.0, 31740.0, 9555.0, 8100.0, 1.0, 6.2);		// 1st by steps
 	tp.CreateDisplayList (YZ, 52, 256.0, 128.0, 31740.0, 9555.0, 8100.0, 6.2, 1.0);		// 1st by steps
 }
+
+//============================================
+// Tutorial on banner
+//============================================
+
+void DisplayBanner()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(THE_BANNER));
+	glPushMatrix();
+	glTranslatef(step - 1600, 0.0, 20880.0);
+	glCallList(223);
+	glPopMatrix();
+}
+
+void DrawBanner()
+{
+	tp.CreateDisplayList(XY, 223, 1600.0, 1600.0, 0.0, 0.0, 0.0, 1.0, 1.0);	// Banner
+}
+
 
 //--------------------------------------------------------------------------------------
 //  Display Window and Door Posts on Phys SCi Building
