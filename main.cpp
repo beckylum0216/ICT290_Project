@@ -2435,16 +2435,19 @@ void DrawMainPosts ()
 
 void DisplayBanner()
 {
+	step = -1940.0;
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(THE_BANNER));
 	glPushMatrix();
-	glTranslatef(step - 1600, 0.0, 20880.0);
-	glCallList(223);
+	glTranslatef(step-1600+128, 0.0, 20080.0);
+	glCallList(800);
+
 	glPopMatrix();
 }
 
 void DrawBanner()
 {
-	tp.CreateDisplayList(XY, 223, 1600.0, 1600.0, 0.0, 0.0, 0.0, 1.0, 1.0);	// Banner
+	//tp.CreateDisplayList(XY, 800, 1600.0, 900, -1940, 9995, 10105, 1.0, 1.0);
+	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
 }
 
 
@@ -5201,6 +5204,7 @@ void CreateTextureList()
 	DrawCylinders ();			// 437-441
 	DrawMapExit ();				// 448-449, 454
 	// 455-459
+	DrawBanner();
 }
 
 
