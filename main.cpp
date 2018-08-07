@@ -324,8 +324,8 @@ void reshape(int w, int h);
 void keys(unsigned char key, int x, int y);
 
 // keyboard and mouse functions
-void movementKeys(int key, int x, int y);
-void releaseKey(int key, int x, int y);
+void movementKeys(unsigned char key, int x, int y);
+void releaseKey(unsigned char key, int x, int y);
 void releaseKeys(unsigned char key, int x, int y);
 void Mouse(int button, int state, int x, int y);
 void mouseMove(int x, int y);
@@ -416,8 +416,8 @@ int main(int argc, char **argv)
 	myinit();
 
 	glutIgnoreKeyRepeat(1);
-	glutSpecialFunc(movementKeys);
-	glutSpecialUpFunc(releaseKey);
+	//glutSpecialFunc(movementKeys);
+	//glutSpecialUpFunc(releaseKey);
 	glutKeyboardUpFunc (releaseKeys);
 	glutKeyboardFunc(keys);
 
@@ -538,19 +538,23 @@ void movementKeys(int key, int x, int y)
 {
 	switch (key)
 	{
-		case GLUT_KEY_LEFT :
+		case 'A' :
+		case 'a' :
 			cam.DirectionRotateLR(-1);
 			break;
 
-		case GLUT_KEY_RIGHT : 
+		case 'D' : 
+		case 'd' :
 			cam.DirectionRotateLR(1);
 			break;
 
-		case GLUT_KEY_UP : 
+		case 'W' : 
+		case 'w' :
 			cam.DirectionFB(1);
 			break;
 
-		case GLUT_KEY_DOWN : 
+		case 'S' : 
+		case 's' :
 			cam.DirectionFB(-1);
 			break;
 	}
@@ -562,13 +566,17 @@ void releaseKey(int key, int x, int y)
 	switch (key)
 	{
 		// rotate left or right
-		case GLUT_KEY_LEFT : 
-		case GLUT_KEY_RIGHT : 
+		case 'A' : 
+		case 'D' : 
+		case 'a':
+		case 'd':
 			cam.DirectionRotateLR(0);			
 		break;
 		// move backwards or forwards
-		case GLUT_KEY_UP : 
-		case GLUT_KEY_DOWN : 
+		case 'W' : 
+		case 'S' : 
+		case 'w':
+		case 's':
 			cam.DirectionFB(0);
 		break;
 	}
@@ -580,6 +588,26 @@ void keys(unsigned char key, int x, int y)
 	int i = 0;
 	switch (key)
 	{
+
+		case 'A':
+		case 'a':
+			cam.DirectionRotateLR(-1);
+			break;
+
+		case 'D':
+		case 'd':
+			cam.DirectionRotateLR(1);
+			break;
+
+		case 'W':
+		case 'w':
+			cam.DirectionFB(1);
+			break;
+
+		case 'S':
+		case 's':
+			cam.DirectionFB(-1);
+			break;
 		// step left
 		case 'Z':
 		case 'z':
@@ -596,8 +624,8 @@ void keys(unsigned char key, int x, int y)
 			cam.DirectionLookUD(1);
 			break;
 		// look down
-		case 'A':
-		case 'a':
+		case 'E':
+		case 'e':
 			cam.DirectionLookUD(-1);
 		break;
 		// display campus map
@@ -685,12 +713,27 @@ void releaseKeys(unsigned char key, int x, int y)
 			cam.DirectionLR(0);
 		break;
 		// look left up or down
-		case 'a' :
-		case 'A' :
+		//case 'a' :
+		//case 'A' :
 		case 'q' :
 		case 'Q' :
 			cam.DirectionLookUD(0);
 		break;
+
+		// rotate left or right
+		case 'A':
+		case 'D':
+		case 'a':
+		case 'd':
+			cam.DirectionRotateLR(0);
+			break;
+			// move backwards or forwards
+		case 'W':
+		case 'S':
+		case 'w':
+		case 's':
+			cam.DirectionFB(0);
+			break;
 	}
 }
 
@@ -2416,9 +2459,6 @@ void DisplayMainPosts ()
 	glCallList(19);
 	glPopMatrix();
 }
-
-
-
 
 
 void DrawMainPosts ()
@@ -5206,9 +5246,6 @@ void CreateTextureList()
 	// 455-459
 	DrawBanner();
 }
-
-
-
 
 //--------------------------------------------------------------------------------------
 //  Increments frame count used for setting movement speed

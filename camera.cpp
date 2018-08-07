@@ -10,6 +10,7 @@
 
 #include <math.h>
 #include <gl/glut.h>
+#include <iostream>
 
 //--------------------------------------------------------------------------------------
 // Set initial values
@@ -276,7 +277,12 @@ void Camera::SetPlains(const int & moveX, const int & moveZ)
 				
 				if ((m_plainNo != i) && m_plainHeight != m_Plain.GetYstart(i))
 				{
+					std::cout << i << " " << m_plainNo << " " << m_plainHeight << std::endl;
 					stepSound->Play();
+				}
+				else
+				{
+					stepSound->Stop();
 				}
 
 
