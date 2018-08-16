@@ -355,6 +355,8 @@ void DisplayStepBricks ();
 void DisplayLights ();
 void DisplayECL ();
 void DisplayBanner();
+void DisplayBoardWalkGarden();
+
 
 // calls functions to create display lists (below)
 void CreateTextureList();
@@ -384,6 +386,7 @@ void DrawStepBricks ();
 void DrawMapExit ();
 void DrawECL ();
 void DrawBanner();
+void DrawBoardWalkGarden();
 
 
 void BindBridgeWall(GLint LR);
@@ -1646,7 +1649,6 @@ void CreateTextures()
 
 
 	// Tutorial 1 Banner creation
-
 	image = tp.LoadTexture("data/bannerlossy.raw", 1600, 1066);
 	tp.CreateTexture(THE_BANNER, image, 1600, 1066);
 
@@ -1806,7 +1808,7 @@ void DisplayChancPosts ()
 	//glPushMatrix();
 		//glTranslatef(0.0, 320.0, -9600.0);
 		//glCallList(237);
-//	glPopMatrix();
+	//glPopMatrix();
 
 	// angled corner of window ledges
 	glPushMatrix();
@@ -2489,6 +2491,27 @@ void DrawBanner()
 	//tp.CreateDisplayList(XY, 800, 1600.0, 900, -1940, 9995, 10105, 1.0, 1.0);
 	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
 }
+
+//============================================
+// BoardwalkGarden
+//============================================
+
+
+void DisplayBoardWalkGarden()
+{
+	step = -1940;
+	glPushMatrix();
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(GRASS));
+		glTranslatef(-1000.00, 0.00, 20000.00);
+		glCallList(460);
+	glPopMatrix();
+}
+
+void DrawBoardWalkGarden()
+{
+	tp.CreateDisplayList(XY, 460, 64.0, 64.0, 9000.0, 10200.0, 19000.0, 203.125, 281.25);
+}
+
 
 
 //--------------------------------------------------------------------------------------
@@ -5216,6 +5239,8 @@ void DrawMapExit ()
 	tp.CreateDisplayList (0, 454, 256.0, 64.0, 0.0, 0.0, 0.0, 1.0, 1.0);	  // welcome screen
 }
 
+
+
 //--------------------------------------------------------------------------------------
 //  Create display lists
 //	Numbers indicate list numbers
@@ -5244,7 +5269,8 @@ void CreateTextureList()
 	DrawCylinders ();			// 437-441
 	DrawMapExit ();				// 448-449, 454
 	// 455-459
-	DrawBanner();
+	DrawBanner();				//223
+	DrawBoardWalkGarden();		//224? 
 }
 
 //--------------------------------------------------------------------------------------
