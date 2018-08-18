@@ -356,7 +356,11 @@ void DisplayLights ();
 void DisplayECL ();
 void DisplayBanner();
 void DisplayBoardWalkGarden();
-
+void DisplayBoardwalk440WestPaving();
+void DisplayBoardwalk440SouthPaving();
+void DisplayBoardwalk440EastPaving();
+void DisplayBoardwalk440NorthWall();
+void DisplayBoardwalk440SouthWall();
 
 // calls functions to create display lists (below)
 void CreateTextureList();
@@ -387,7 +391,11 @@ void DrawMapExit ();
 void DrawECL ();
 void DrawBanner();
 void DrawBoardWalkGarden();
-
+void DrawBoardwalk440WestPaving();
+void DrawBoardwalk440SouthPaving();
+void DrawBoardwalk440EastPaving();
+void DrawBoardwalk440NorthWall();
+void DrawBoardwalk440SouthWall();
 
 void BindBridgeWall(GLint LR);
 void BindBuildingWall();
@@ -459,11 +467,12 @@ void myinit()
 	// turn collision detection on
 	cam.SetCollisionDetectionOn(true);
 	// set number of bounding boxes required
-	cam.SetNoBoundingBoxes(19);
+	cam.SetNoBoundingBoxes(20);
 	// set starting position of user
-	cam.Position(32720.0, 9536.0,	
-				 4800.0, 180.0);
-	
+	//cam.Position(32720.0, 9536.0, 4800.0, 180.0);
+	cam.Position(0.0, 11000.0, 40000.0, 180.0);
+
+
 	CreatePlains();	
 	
 	// creates bounding boxes and places in array
@@ -877,8 +886,8 @@ void CreateBoundingBoxes()
 
 	// Canteen block
 	cam.SetAABBMaxX(12, 2608.0);
-	cam.SetAABBMinX(12, 0.0);
-	cam.SetAABBMaxZ(12, 49046.0);
+	cam.SetAABBMinX(12, 2000.0);
+	cam.SetAABBMaxZ(12, 41150.0);
 	cam.SetAABBMinZ(12, 0.0);
 
 	// Telephones
@@ -904,6 +913,20 @@ void CreateBoundingBoxes()
 	cam.SetAABBMinX(16, 31444.0);
 	cam.SetAABBMaxZ(16, 10395.0);
 	cam.SetAABBMinZ(16, 4590.0);
+
+	//Bookshop 440 south wall next to broadwalk
+	cam.SetAABBMaxX(17, 2608.0);
+	cam.SetAABBMinX(17, -15500.0);
+	cam.SetAABBMaxZ(17, 50000.0);
+	cam.SetAABBMinZ(17, 42750.0);
+
+	//Bookshop 440 east wall next to broadwalk
+	cam.SetAABBMaxX(18, -12500.0);
+	cam.SetAABBMinX(19, -15500.0);
+	cam.SetAABBMaxZ(18, 42050.0);
+	cam.SetAABBMinZ(18, 28525.0);
+
+
 }
 
 //--------------------------------------------------------------------------------------
@@ -1684,6 +1707,14 @@ void DrawBackdrop()
 	DisplayRoof();
 	DisplayStepBricks ();
 	DisplayBanner();
+	DisplayBoardWalkGarden();
+	DisplayBoardwalk440WestPaving();
+	DisplayBoardwalk440SouthPaving();
+	DisplayBoardwalk440EastPaving();
+	DisplayBoardwalk440NorthWall();
+	DisplayBoardwalk440SouthWall();
+
+
 	if (lightsOn) DisplayLights ();
 }
 
@@ -2482,7 +2513,6 @@ void DisplayBanner()
 	glPushMatrix();
 	glTranslatef(step-1600+128, 0.0, 20080.0);
 	glCallList(800);
-
 	glPopMatrix();
 }
 
@@ -2502,16 +2532,94 @@ void DisplayBoardWalkGarden()
 	step = -1940;
 	glPushMatrix();
 		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(GRASS));
-		glTranslatef(-1000.00, 0.00, 20000.00);
-		glCallList(460);
+		//glTranslatef(step-1600.00+128.00, 0.00, 10080.00);
+		glCallList(2001);
 	glPopMatrix();
+
 }
 
 void DrawBoardWalkGarden()
 {
-	tp.CreateDisplayList(XY, 460, 64.0, 64.0, 9000.0, 10200.0, 19000.0, 203.125, 281.25);
+	//tp.CreateDisplayList(XY, 460, 64.0, 64.0, 0.0, 11000.0, 50000.0, 50.0, 50.0);
+	tp.CreateDisplayList(XZ, 2001, 64.0, 64.0, -7030.0, 10000.0, 28500.0, 110.0, 196.0);
 }
 
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving 
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440WestPaving()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2002);
+	
+}
+
+void DrawBoardwalk440WestPaving()
+{
+	tp.CreateDisplayList(XZ, 2002, 128.0, 256.0, 0.0, 10000.0, 28525.0, 25.0, 50.0);	// 440 west paving closest wall to canteen
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving 
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440SouthPaving()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2003);
+}
+
+void DrawBoardwalk440SouthPaving()
+{
+	tp.CreateDisplayList(XZ, 2003, 128.0, 256.0, -12500.0, 10000.0, 41025.0, 1850.0, 8.0);	// the boardwalk
+
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving 
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440EastPaving()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2004);
+
+}
+
+void DrawBoardwalk440EastPaving()
+{
+	tp.CreateDisplayList(XZ, 2004, 128.0, 256.0, -10200.0, 10000.0, 28525.0, 25.0, 50.0);	// 440 east paving closest wall to canteen
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Wall
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440NorthWall()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2005);
+
+}
+
+void DrawBoardwalk440NorthWall()
+{
+	tp.CreateDisplayList(XY, 2005, 128.0, 128.0, -10200.0, 10000.0, 28525.0, 100.0, 25.0);	// 440 North wall
+}
+
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Wall
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440SouthWall()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2006);
+
+}
+
+void DrawBoardwalk440SouthWall()
+{
+	tp.CreateDisplayList(XY, 2006, 128.0, 128.0, -12500.0, 10000.0, 43050.0, 115.0, 25.0);	// 440 south wall
+}
 
 
 //--------------------------------------------------------------------------------------
@@ -5269,8 +5377,13 @@ void CreateTextureList()
 	DrawCylinders ();			// 437-441
 	DrawMapExit ();				// 448-449, 454
 	// 455-459
-	DrawBanner();				//223
-	DrawBoardWalkGarden();		//224? 
+	DrawBanner();				//2000
+	DrawBoardWalkGarden();		//2001
+	DrawBoardwalk440WestPaving(); // 2002
+	DrawBoardwalk440SouthPaving(); // 2003
+	DrawBoardwalk440EastPaving(); // 2004
+	DrawBoardwalk440NorthWall(); // 2005
+	DrawBoardwalk440SouthWall(); // 2006
 }
 
 //--------------------------------------------------------------------------------------
