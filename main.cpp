@@ -363,6 +363,9 @@ void DisplayBoardwalk440NorthWall();
 void DisplayBoardwalk440SouthWall();
 void DisplayBoardwalk440EastWall();
 void DisplayBoardwalk440WestWall();
+void DisplayBoardwalk440SouthPosts();
+void DisplayBoardwalk440WestPosts();
+void DisplayBoardwalk440EastPosts();
 
 // calls functions to create display lists (below)
 void CreateTextureList();
@@ -400,6 +403,9 @@ void DrawBoardwalk440NorthWall();
 void DrawBoardwalk440SouthWall();
 void DrawBoardwalk440EastWall();
 void DrawBoardwalk440WestWall();
+void DrawBoardwalk440SouthPosts();
+void DrawBoardwalk440WestPosts();
+void DrawBoardwalk440EastPosts();
 
 void BindBridgeWall(GLint LR);
 void BindBuildingWall();
@@ -471,7 +477,7 @@ void myinit()
 	// turn collision detection on
 	cam.SetCollisionDetectionOn(true);
 	// set number of bounding boxes required
-	cam.SetNoBoundingBoxes(20);
+	cam.SetNoBoundingBoxes(50);
 	// set starting position of user
 	//cam.Position(32720.0, 9536.0, 4800.0, 180.0);
 	cam.Position(2608.0, 11000.0, 40000.0, 180.0);
@@ -920,7 +926,7 @@ void CreateBoundingBoxes()
 
 	//Bookshop 440 south wall next to broadwalk
 	cam.SetAABBMaxX(17, 2608.0);
-	cam.SetAABBMinX(17, -25050.0);
+	cam.SetAABBMinX(17, -27360.0);
 	cam.SetAABBMaxZ(17, 50000.0);
 	cam.SetAABBMinZ(17, 42750.0);
 
@@ -937,10 +943,10 @@ void CreateBoundingBoxes()
 	cam.SetAABBMinZ(19, 28525.0);
 
 	//Bookshop 440 North wall next to broadwalk
-	cam.SetAABBMaxX(17, -1192.0);
-	cam.SetAABBMinX(17, -20952.0);
-	cam.SetAABBMaxZ(17, 31550.0);
-	cam.SetAABBMinZ(17, 21550.0);
+	cam.SetAABBMaxX(20, -1192.0);
+	cam.SetAABBMinX(20, -20952.0);
+	cam.SetAABBMaxZ(20, 31550.0);
+	cam.SetAABBMinZ(20, 21550.0);
 
 }
 
@@ -1730,6 +1736,9 @@ void DrawBackdrop()
 	DisplayBoardwalk440SouthWall();
 	DisplayBoardwalk440EastWall();
 	DisplayBoardwalk440WestWall();
+	DisplayBoardwalk440SouthPosts();
+	DisplayBoardwalk440WestPosts();
+	DisplayBoardwalk440EastPosts();
 
 	if (lightsOn) DisplayLights ();
 }
@@ -2545,7 +2554,7 @@ void DrawBanner()
 
 void DisplayBoardWalkGarden()
 {
-	step = -1940;
+	
 	glPushMatrix();
 		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(GRASS));
 		//glTranslatef(step-1600.00+128.00, 0.00, 10080.00);
@@ -2667,6 +2676,140 @@ void DisplayBoardwalk440WestWall()
 void DrawBoardwalk440WestWall()
 {
 	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 18.0, 74.0);	// 440 West wall
+}
+
+void DisplayBoardwalk440SouthPosts()
+{
+	GLfloat intraPost;
+	
+	intraPost = 0;
+	for (int ii = 0; ii < 8; ii++)
+	{
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+		glPushMatrix();
+		glTranslatef(intraPost, 0.00, 0.00);
+		glCallList(2009);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(intraPost, 0.00, 128.0);
+		glCallList(2009);
+		glPopMatrix();
+
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+		glPushMatrix();
+		glTranslatef(intraPost, 0.0, 0.0);
+		glCallList(2010);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(intraPost + 128.0, 0.0, 0.0);
+		glCallList(2010);
+		glPopMatrix();
+
+		intraPost += 2280;
+	}
+	
+}
+
+
+void DrawBoardwalk440SouthPosts()
+{
+	tp.CreateDisplayList(XY, 2009, 128.0, 256.0, -19052.0, 10000.0, 41050.0, 1.0, 4.48); 
+	tp.CreateDisplayList(YZ, 2010, 256.0, 128.0, -19052.0, 10000.0, 41050.0, 4.48, 1.0);
+
+
+	//tp.CreateDisplayList(XY, 2011, 128.0, 256.0, -19052.0, 13000.0, 41050.0, 1.0, 6.2);		
+	//tp.CreateDisplayList(YZ, 2012, 256.0, 128.0, -19052.0, 13000.0, 41050.0, 6.2, 1.0);		
+}
+
+void DisplayBoardwalk440WestPosts()
+{
+	GLfloat intraPost;
+
+	intraPost = 0;
+	for (int ii = 0; ii < 4; ii++)
+	{
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+		glPushMatrix();
+		glTranslatef(0.0, 0.00, intraPost);
+		glCallList(2011);
+		glCallList(2011);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(0.0, 0.00, 128.0 + intraPost);
+		glCallList(2011);
+		glPopMatrix();
+
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+		glPushMatrix();
+		glTranslatef(0.0, 0.0, intraPost);
+		glCallList(2012);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(128.00, 0.0, intraPost);
+		glCallList(2012);
+		glPopMatrix();
+
+		intraPost -= 1900;
+	}
+
+}
+
+
+void DrawBoardwalk440WestPosts()
+{
+	tp.CreateDisplayList(XY, 2011, 128.0, 256.0, -19052.0-128.0, 10000.0, 39150.0, 1.0, 4.48);
+	tp.CreateDisplayList(YZ, 2012, 256.0, 128.0, -19052.0-128.0, 10000.0, 39150.0, 4.48, 1.0);
+
+
+	//tp.CreateDisplayList(XY, 2011, 128.0, 256.0, -19052.0, 13000.0, 41050.0, 1.0, 6.2);		
+	//tp.CreateDisplayList(YZ, 2012, 256.0, 128.0, -19052.0, 13000.0, 41050.0, 6.2, 1.0);		
+}
+
+
+void DisplayBoardwalk440EastPosts()
+{
+	GLfloat intraPost;
+
+	intraPost = 0;
+	for (int ii = 0; ii < 4; ii++)
+	{
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+		glPushMatrix();
+		glTranslatef(0.0, 0.00, intraPost);
+		glCallList(2013);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(0.0, 0.00, 128.0 + intraPost);
+		glCallList(2013);
+		glPopMatrix();
+
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST));
+		glPushMatrix();
+		glTranslatef(0.0, 0.0, intraPost);
+		glCallList(2014);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(128.00, 0.0, intraPost);
+		glCallList(2014);
+		glPopMatrix();
+
+		intraPost -= 1900;
+	}
+
+}
+
+
+void DrawBoardwalk440EastPosts()
+{
+	tp.CreateDisplayList(XY, 2013, 128.0, 256.0, -3092.0+128.0, 10000.0, 39150.0, 1.0, 4.48);
+	tp.CreateDisplayList(YZ, 2014, 256.0, 128.0, -3092.0+128.0, 10000.0, 39150.0, 4.48, 1.0);
+
+
+	//tp.CreateDisplayList(XY, 2011, 128.0, 256.0, -19052.0, 13000.0, 41050.0, 1.0, 6.2);		
+	//tp.CreateDisplayList(YZ, 2012, 256.0, 128.0, -19052.0, 13000.0, 41050.0, 6.2, 1.0);		
 }
 
 
@@ -5434,6 +5577,9 @@ void CreateTextureList()
 	DrawBoardwalk440SouthWall(); // 2006
 	DrawBoardwalk440EastWall(); // 2007
 	DrawBoardwalk440WestWall(); // 2008
+	DrawBoardwalk440SouthPosts(); // 2009 - 2010
+	DrawBoardwalk440WestPosts(); // 2011 - 2012
+	DrawBoardwalk440EastPosts(); // 2013 -2014
 }
 
 //--------------------------------------------------------------------------------------
