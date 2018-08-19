@@ -361,6 +361,8 @@ void DisplayBoardwalk440SouthPaving();
 void DisplayBoardwalk440EastPaving();
 void DisplayBoardwalk440NorthWall();
 void DisplayBoardwalk440SouthWall();
+void DisplayBoardwalk440EastWall();
+void DisplayBoardwalk440WestWall();
 
 // calls functions to create display lists (below)
 void CreateTextureList();
@@ -396,6 +398,8 @@ void DrawBoardwalk440SouthPaving();
 void DrawBoardwalk440EastPaving();
 void DrawBoardwalk440NorthWall();
 void DrawBoardwalk440SouthWall();
+void DrawBoardwalk440EastWall();
+void DrawBoardwalk440WestWall();
 
 void BindBridgeWall(GLint LR);
 void BindBuildingWall();
@@ -916,14 +920,14 @@ void CreateBoundingBoxes()
 
 	//Bookshop 440 south wall next to broadwalk
 	cam.SetAABBMaxX(17, 2608.0);
-	cam.SetAABBMinX(17, -15500.0);
+	cam.SetAABBMinX(17, -25050.0);
 	cam.SetAABBMaxZ(17, 50000.0);
 	cam.SetAABBMinZ(17, 42750.0);
 
-	//Bookshop 440 east wall next to broadwalk
-	cam.SetAABBMaxX(18, -12500.0);
-	cam.SetAABBMinX(19, -15500.0);
-	cam.SetAABBMaxZ(18, 42050.0);
+	//Bookshop 440 West wall next to broadwalk
+	cam.SetAABBMaxX(18, -17720.0);
+	cam.SetAABBMinX(18, -18720.0);
+	cam.SetAABBMaxZ(18, 40050.0);
 	cam.SetAABBMinZ(18, 28525.0);
 
 
@@ -1713,7 +1717,8 @@ void DrawBackdrop()
 	DisplayBoardwalk440EastPaving();
 	DisplayBoardwalk440NorthWall();
 	DisplayBoardwalk440SouthWall();
-
+	DisplayBoardwalk440EastWall();
+	DisplayBoardwalk440WestWall();
 
 	if (lightsOn) DisplayLights ();
 }
@@ -2519,7 +2524,7 @@ void DisplayBanner()
 void DrawBanner()
 {
 	//tp.CreateDisplayList(XY, 800, 1600.0, 900, -1940, 9995, 10105, 1.0, 1.0);
-	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
+	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10100.0, 10894.0, 1.0, 1.0);	// Banner
 }
 
 //============================================
@@ -2541,7 +2546,7 @@ void DisplayBoardWalkGarden()
 void DrawBoardWalkGarden()
 {
 	//tp.CreateDisplayList(XY, 460, 64.0, 64.0, 0.0, 11000.0, 50000.0, 50.0, 50.0);
-	tp.CreateDisplayList(XZ, 2001, 64.0, 64.0, -7030.0, 10000.0, 28500.0, 110.0, 196.0);
+	tp.CreateDisplayList(XZ, 2001, 64.0, 64.0, -18902.0, 10000.0, 31550.0, 249.0, 148.0);
 }
 
 
@@ -2557,7 +2562,7 @@ void DisplayBoardwalk440WestPaving()
 
 void DrawBoardwalk440WestPaving()
 {
-	tp.CreateDisplayList(XZ, 2002, 128.0, 256.0, 0.0, 10000.0, 28525.0, 25.0, 50.0);	// 440 west paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2002, 128.0, 256.0, -20952.0, 10000.0, 31550.0, 14.0, 37.0);	// 440 west paving closest wall to canteen
 }
 
 //--------------------------------------------------------------------------------------
@@ -2571,7 +2576,7 @@ void DisplayBoardwalk440SouthPaving()
 
 void DrawBoardwalk440SouthPaving()
 {
-	tp.CreateDisplayList(XZ, 2003, 128.0, 256.0, -12500.0, 10000.0, 41025.0, 1850.0, 8.0);	// the boardwalk
+	tp.CreateDisplayList(XZ, 2003, 128.0, 256.0, -25030.0, 10000.0, 41025.0, 216.0, 8.0);	// the boardwalk
 
 }
 
@@ -2587,7 +2592,7 @@ void DisplayBoardwalk440EastPaving()
 
 void DrawBoardwalk440EastPaving()
 {
-	tp.CreateDisplayList(XZ, 2004, 128.0, 256.0, -10200.0, 10000.0, 28525.0, 25.0, 50.0);	// 440 east paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2004, 128.0, 256.0, -2982.0, 10000.0, 31550.0, 14.0, 37.0);	// 440 east paving closest wall to canteen
 }
 
 //--------------------------------------------------------------------------------------
@@ -2602,7 +2607,7 @@ void DisplayBoardwalk440NorthWall()
 
 void DrawBoardwalk440NorthWall()
 {
-	tp.CreateDisplayList(XY, 2005, 128.0, 128.0, -10200.0, 10000.0, 28525.0, 100.0, 25.0);	// 440 North wall
+	tp.CreateDisplayList(XY, 2005, 128.0, 128.0, -20900.0, 10000.0, 31550.0, 154.0, 18.0);	// 440 North wall
 }
 
 
@@ -2618,7 +2623,39 @@ void DisplayBoardwalk440SouthWall()
 
 void DrawBoardwalk440SouthWall()
 {
-	tp.CreateDisplayList(XY, 2006, 128.0, 128.0, -12500.0, 10000.0, 43050.0, 115.0, 25.0);	// 440 south wall
+	tp.CreateDisplayList(XY, 2006, 128.0, 128.0, -25030.0, 10000.0, 43000.0, 214.0, 18.0);	// 440 South wall
+}
+
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Wall
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440EastWall()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2007);
+
+}
+
+void DrawBoardwalk440EastWall()
+{
+	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 18.0, 74.0);	// 440 East wall
+}
+
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Wall
+//--------------------------------------------------------------------------------------
+void DisplayBoardwalk440WestWall()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
+	glCallList(2008);
+
+}
+
+void DrawBoardwalk440WestWall()
+{
+	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 20.0, 74.0);	// 440 West wall
 }
 
 
@@ -4931,7 +4968,7 @@ void DrawLargerTextures ()
 	tp.CreateYtoZWindowList (414, 8803.0, 9998.0, 775.0, 43096.0, 77.0, 1.0, 0.5625);	// library post
 	tp.CreateYtoZWindowList (422, 33872.0, 10768.0, 64.0, 28646.0, 856.0, 1.0, 1.0);	// top of toilet door female
 	tp.CreateYtoZWindowList (423, 33872.0, 10768.0, 64.0, 30566.0, 840.0, 1.0, 1.0);	// top of toilet door male
-	tp.CreateYtoZWindowList (450, 2352.0, 10000.0, 896.0, 41168.0, 1792.0, 1.0, 1.0);	// west exit
+	//tp.CreateYtoZWindowList (450, 2352.0, 10000.0, 896.0, 41168.0, 1792.0, 1.0, 1.0);	// west exit
 	tp.CreateDisplayList (XZ, 451, 400.0, 256.0, 2352.0, 10896.0, 41168.0, 0.64, 7.0);  // above west exit
 	tp.CreateXtoYWindowList (452, 41127.0, 35280.0, 320.0, 10128.0, 704.0, 0.91, 1.0);	// w 233 window by steps (end of phys sci)
 	tp.CreateDisplayList (XZ, 453, 2.0, 2.0, 35856.0, 9400.0, 40500.0, 180.0, 1380.0);  // block at bottom of steps
@@ -5384,6 +5421,8 @@ void CreateTextureList()
 	DrawBoardwalk440EastPaving(); // 2004
 	DrawBoardwalk440NorthWall(); // 2005
 	DrawBoardwalk440SouthWall(); // 2006
+	DrawBoardwalk440EastWall(); // 2007
+	DrawBoardwalk440WestWall(); // 2008
 }
 
 //--------------------------------------------------------------------------------------
