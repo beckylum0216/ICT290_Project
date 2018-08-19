@@ -474,7 +474,7 @@ void myinit()
 	cam.SetNoBoundingBoxes(20);
 	// set starting position of user
 	//cam.Position(32720.0, 9536.0, 4800.0, 180.0);
-	cam.Position(0.0, 11000.0, 40000.0, 180.0);
+	cam.Position(2608.0, 11000.0, 40000.0, 180.0);
 
 
 	CreatePlains();	
@@ -925,11 +925,22 @@ void CreateBoundingBoxes()
 	cam.SetAABBMinZ(17, 42750.0);
 
 	//Bookshop 440 West wall next to broadwalk
-	cam.SetAABBMaxX(18, -17720.0);
-	cam.SetAABBMinX(18, -18720.0);
+	cam.SetAABBMaxX(18, -20952.0);
+	cam.SetAABBMinX(18, 24752.0);
 	cam.SetAABBMaxZ(18, 40050.0);
 	cam.SetAABBMinZ(18, 28525.0);
 
+	//Bookshop 440 East wall next to broadwalk
+	cam.SetAABBMaxX(19, 0.0);
+	cam.SetAABBMinX(19, -1192.0);
+	cam.SetAABBMaxZ(19, 40050.0);
+	cam.SetAABBMinZ(19, 28525.0);
+
+	//Bookshop 440 North wall next to broadwalk
+	cam.SetAABBMaxX(17, -1192.0);
+	cam.SetAABBMinX(17, -20952.0);
+	cam.SetAABBMaxZ(17, 31550.0);
+	cam.SetAABBMinZ(17, 21550.0);
 
 }
 
@@ -2546,7 +2557,7 @@ void DisplayBoardWalkGarden()
 void DrawBoardWalkGarden()
 {
 	//tp.CreateDisplayList(XY, 460, 64.0, 64.0, 0.0, 11000.0, 50000.0, 50.0, 50.0);
-	tp.CreateDisplayList(XZ, 2001, 64.0, 64.0, -18902.0, 10000.0, 31550.0, 249.0, 148.0);
+	tp.CreateDisplayList(XZ, 2001, 64.0, 64.0, -19049.0, 10000.0, 31550.0, 251.0, 148.0);
 }
 
 
@@ -2562,7 +2573,7 @@ void DisplayBoardwalk440WestPaving()
 
 void DrawBoardwalk440WestPaving()
 {
-	tp.CreateDisplayList(XZ, 2002, 128.0, 256.0, -20952.0, 10000.0, 31550.0, 14.0, 37.0);	// 440 west paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2002, 128.0, 256.0, -20952.0, 10000.0, 31550.0, 15.0, 37.0);	// 440 west paving closest wall to canteen
 }
 
 //--------------------------------------------------------------------------------------
@@ -2607,7 +2618,7 @@ void DisplayBoardwalk440NorthWall()
 
 void DrawBoardwalk440NorthWall()
 {
-	tp.CreateDisplayList(XY, 2005, 128.0, 128.0, -20900.0, 10000.0, 31550.0, 154.0, 18.0);	// 440 North wall
+	tp.CreateDisplayList(XY, 2005, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 155.0, 27.0);	// 440 North wall
 }
 
 
@@ -2655,7 +2666,7 @@ void DisplayBoardwalk440WestWall()
 
 void DrawBoardwalk440WestWall()
 {
-	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 20.0, 74.0);	// 440 West wall
+	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 18.0, 74.0);	// 440 West wall
 }
 
 
