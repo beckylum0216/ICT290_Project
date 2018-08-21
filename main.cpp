@@ -173,4 +173,3 @@ void mouseMove(int x, int y)
 		else
 			cam.DirectionLookUD(0);
 }*/
-

@@ -335,6 +335,7 @@ public:
 	void DisplayBoardwalk440SouthWallFacade();
 	void DisplayBoardwalk440EastFacade();
 	void DisplayBoardwalk440WestFacade();
+	void DisplayBoardwalk440CorridorWallEast();
 
 	void DisplayBoardwalk440EastFacadeLedge();
 	void DrawBoardwalk440EastFacadeLedge();
@@ -394,6 +395,7 @@ public:
 	void DrawBoardwalk440SouthWallFacade();
 	void DrawBoardwalk440EastFacade();
 	void DrawBoardwalk440WestFacade();
+	void DrawBoardwalk440CorridorWallEast();
 
 	void DisplayBoardwalk440WestFacadeLedge();
 	void DrawBoardwalk440WestFacadeLedge();

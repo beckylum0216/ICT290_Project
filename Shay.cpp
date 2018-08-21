@@ -1147,6 +1147,7 @@ void Shay::DrawBackdrop()
 	DisplayBoardwalk440SouthWallFacade();
 	DisplayBoardwalk440EastFacade();
 	DisplayBoardwalk440WestFacade();
+	DisplayBoardwalk440CorridorWallEast();
 
 	DisplayBoardwalk440WestFacadeLedge();
 	DisplayBoardwalk440EastFacadeLedge();
@@ -5431,6 +5432,21 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 	tp.CreateDisplayList(YZ, 2036, 128.0, 256.0, -3093.0 + 64, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 0.5, 7.42);
 }
 
+//--------------------------------------------------------------------------------------
+//  Corridor Wall East
+//--------------------------------------------------------------------------------------
+
+void Shay::DisplayBoardwalk440CorridorWallEast()
+{
+
+}
+
+void DrawBoardwalk440CorridorWallEast()
+{
+
+}
+
+//--------------------------------------------------------------------------------------
 
 void Shay::Testy()
 {
