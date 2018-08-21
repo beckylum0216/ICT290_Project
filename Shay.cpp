@@ -17,8 +17,8 @@ void Shay::Init()
 	// set number of bounding boxes required
 	cam.SetNoBoundingBoxes(50);
 	// set starting position of user
-	cam.Position(32720.0, 9536.0,
-		4800.0, 180.0);
+	//cam.Position(32720.0, 9536.0, 4800.0, 180.0);
+	cam.Position(2608.0, 10500.0, 41025.0, 180.0);
 
 	CreatePlains();
 
@@ -1150,6 +1150,7 @@ void Shay::DrawBackdrop()
 
 	DisplayBoardwalk440WestFacadeLedge();
 	DisplayBoardwalk440EastFacadeLedge();
+	Display440BoardwalkEastSteps();
 	
 	if (lightsOn) 
 		DisplayLights ();
@@ -4732,6 +4733,7 @@ void Shay::CreateTextureList()
 
 	DrawBoardwalk440WestFacadeLedge();
 	DrawBoardwalk440EastFacadeLedge();
+	Draw440BoardwalkEastSteps();
 
 }
 
@@ -5432,7 +5434,82 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 }
 
 
-void Shay::Test()
+//--------------------------------------------------------------------------------------
+// Display Steps
+//--------------------------------------------------------------------------------------
+void Shay::Display440BoardwalkEastSteps()
 {
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEP_PAVING_1));
+	for (int i = 2100; i < 2104; i++) glCallList(i);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY_TOP));
+	for (i = 2200; i < 2204; i++) glCallList(i);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEP_PAVING_1));
+	for (i = 2300; i < 2304; i++) glCallList(i);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY_TOP));
+	for (i = 2400; i < 2404; i++) glCallList(i);
+
+	/*
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY));
+	step = 0.0;
+	step2 = -51.0;
+	for (i = 0; i < 10; i++)
+	{
+		glPushMatrix();
+		glTranslatef(step, step2, 0.0);
+		glCallList(206);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(step, step2, 965.0);
+		glCallList(206);
+		glPopMatrix();
+		step += 128.0;
+		step2 += -51.0;
+	}
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY_TOP));
+	glCallList(207);
+	glPushMatrix();
+	glTranslatef(0.0, 0.0, 965.0);
+	glCallList(207);
+	glPopMatrix();
+	*/
+}
+
+void Shay::Draw440BoardwalkEastSteps()
+{
+	step = 10500.0;
+	stepLength = 0.0;
+	for (int i = 2100; i < 2104; i++)
+	{
+		tp.CreateDisplayList(XZ ,i, 512, 1024.0, -5000.0 + stepLength, step, 35000 , 0.277, 2.2);
+		tp.CreateDisplayList(YZ, i + 100, 64.0, 64.0, -5000.0 + stepLength, step - 64.0, 35000, 1, 35.0);
+		step -= 48.0;
+		stepLength -= 142.0;
+		/*
+		if ((i + 3) % 4 == 0)
+		{
+			stepLength -= 500.0;
+			step -= 48.0;
+		}
+		*/
+	}
+
+	/*
+	step = 11000.0;
+	stepLength = 8882.0;
+	for (i = 2051; i < 2054; i++)
+	{
+		tp.CreateDisplayList(XZ, i, 1024.0, 512.0, -4093.0, step, stepLength + 41025.0, 2.2, 1.0);
+		tp.CreateDisplayList(XY, i + 3, 64.0, 64.0, -4093.0, step - 64.0, stepLength + 41025.0, 35.0, 1.0);
+		step -= 239.0;
+		stepLength -= 1068.0;
+	}
+	*/
+	// steps next to GCL1
+	//tp.CreateDisplayList(XZ, 206, 128.0, 1024.0, 34508.0, 10000.0, 41127, 1.0, 0.942);
+	//tp.CreateDisplayList(XZ, 207, 256.0, 1024.0, 34352.0, 10000.0, 41127, 0.609, 0.942);
 
 }

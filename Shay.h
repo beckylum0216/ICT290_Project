@@ -336,8 +336,9 @@ public:
 	void DisplayBoardwalk440EastFacade();
 	void DisplayBoardwalk440WestFacade();
 
+	void DisplayBoardwalk440WestFacadeLedge();
 	void DisplayBoardwalk440EastFacadeLedge();
-	void DrawBoardwalk440EastFacadeLedge();
+	void Display440BoardwalkEastSteps();
 	//---------------------------------------------------
 
 	// calls functions to create display lists (below)
@@ -395,11 +396,9 @@ public:
 	void DrawBoardwalk440EastFacade();
 	void DrawBoardwalk440WestFacade();
 
-	void DisplayBoardwalk440WestFacadeLedge();
+	void DrawBoardwalk440EastFacadeLedge();
 	void DrawBoardwalk440WestFacadeLedge();
-
-
-	void Test();
+	void Draw440BoardwalkEastSteps();
 
 	//-----------------------------------------------------
 
