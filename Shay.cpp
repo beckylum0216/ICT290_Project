@@ -23,7 +23,7 @@ void Shay::Init()
 		4800.0, 180.0);
 	/*/
 	cam.Position(-1192.0, 10350.0, //camera in 400 corridor
-		41160.0, 180.0);
+		42060.0, 180.0);
 	//*/ comment toggle
 
 	CreatePlains();
@@ -4739,6 +4739,7 @@ void Shay::CreateTextureList()
 
 	DrawBoardwalk440WestFacadeLedge();
 	DrawBoardwalk440EastFacadeLedge();
+	DrawBoardwalk440CorridorWallEast();
 
 }
 
@@ -4867,7 +4868,7 @@ void Shay::DisplayBoardwalk440EastWall()
 
 void Shay::DrawBoardwalk440EastWall()
 {
-	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 74.0);	// 440 East wall
+	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 75.08);	// 440 East wall
 }
 
 //--------------------------------------------------------------------------------------
