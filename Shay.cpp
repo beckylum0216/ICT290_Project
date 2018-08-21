@@ -17,8 +17,14 @@ void Shay::Init()
 	// set number of bounding boxes required
 	cam.SetNoBoundingBoxes(50);
 	// set starting position of user
-	cam.Position(32720.0, 9536.0,
+
+	/* 
+	cam.Position(32720.0, 9536.0, //original camera position
 		4800.0, 180.0);
+	/*/
+	cam.Position(-1192.0, 10350.0, //camera in 400 corridor
+		42060.0, 180.0);
+	//*/ comment toggle
 
 	CreatePlains();
 
@@ -1147,6 +1153,7 @@ void Shay::DrawBackdrop()
 	DisplayBoardwalk440SouthWallFacade();
 	DisplayBoardwalk440EastFacade();
 	DisplayBoardwalk440WestFacade();
+	DisplayBoardwalk440CorridorWallEast();
 
 	DisplayBoardwalk440WestFacadeLedge();
 	DisplayBoardwalk440EastFacadeLedge();
@@ -4732,6 +4739,7 @@ void Shay::CreateTextureList()
 
 	DrawBoardwalk440WestFacadeLedge();
 	DrawBoardwalk440EastFacadeLedge();
+	DrawBoardwalk440CorridorWallEast();
 
 }
 
@@ -4860,7 +4868,7 @@ void Shay::DisplayBoardwalk440EastWall()
 
 void Shay::DrawBoardwalk440EastWall()
 {
-	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 74.0);	// 440 East wall
+	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 75.08);	// 440 East wall
 }
 
 //--------------------------------------------------------------------------------------
@@ -5431,6 +5439,50 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 	tp.CreateDisplayList(YZ, 2036, 128.0, 256.0, -3093.0 + 64, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 0.5, 7.42);
 }
 
+//--------------------------------------------------------------------------------------
+//  Corridor Wall East
+//--------------------------------------------------------------------------------------
+
+void Shay::DisplayBoardwalk440CorridorWallEast()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2037);
+}
+
+void Shay::DrawBoardwalk440CorridorWallEast()
+{
+	tp.CreateDisplayList(XY, 2037, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
+}
+
+/* 
+//redundant code for eastwall, stairwell and corrdidorwalleast. Might be useful later
+
+void DisplayBoardwalk440EastWall()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
+	glCallList(2040);
+	glCallList(2041);
+	glCallList(2042);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2043);
+	glCallList(2044);
+	glCallList(2045);
+}
+
+void DrawBoardwalk440EastWall()
+{
+	tp.CreateDisplayList(YZ, 2040, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 64.0);	// 440 East wall
+	tp.CreateDisplayList(YZ, 2041, 128.0, 128.0, 88.0, 10000.0, 39742.0, 20.71, 10.0);
+	tp.CreateDisplayList(YZ, 2042, 128.0, 128.0, -1192.0, 10000.0, 40766.0, 20.71, 3.10);
+
+	tp.CreateDisplayList(XY, 2043, 128.0, 128.0, -1192.0, 10000.0, 39742.0, 10.0, 20.71);
+	tp.CreateDisplayList(XY, 2044, 128.0, 128.0, -1192.0, 10000.0, 40766.0, 10.0, 20.71);
+	tp.CreateDisplayList(XY, 2045, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
+}
+*/
+
+//--------------------------------------------------------------------------------------
 
 void Shay::Test()
 {
