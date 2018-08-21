@@ -378,6 +378,8 @@ void DisplayBoardwalk440EastCeiling();
 void DisplayBoardwalk440SouthWallFacade();
 void DisplayBoardwalk440EastFacade();
 void DisplayBoardwalk440WestFacade();
+void DisplayBoardwalk440WestFacadeLedge();
+void DisplayBoardwalk440EastFacadeLedge();
 
 // calls functions to create display lists (below)
 void CreateTextureList();
@@ -430,6 +432,8 @@ void DrawBoardwalk440EastCeiling();
 void DrawBoardwalk440SouthWallFacade();
 void DrawBoardwalk440EastFacade();
 void DrawBoardwalk440WestFacade();
+void DrawBoardwalk440WestFacadeLedge();
+void DrawBoardwalk440EastFacadeLedge();
 
 void BindBridgeWall(GLint LR);
 void BindBuildingWall();
@@ -948,25 +952,25 @@ void CreateBoundingBoxes()
 	cam.SetAABBMaxZ(16, 10395.0);
 	cam.SetAABBMinZ(16, 4590.0);
 
-	//Bookshop 440 south wall next to broadwalk
+	//440 south wall next to broadwalk
 	cam.SetAABBMaxX(17, 2608.0);
 	cam.SetAABBMinX(17, -27360.0);
 	cam.SetAABBMaxZ(17, 50000.0);
 	cam.SetAABBMinZ(17, 42750.0);
 
-	//Bookshop 440 West wall next to broadwalk
+	//440 West wall next to broadwalk
 	cam.SetAABBMaxX(18, -20952.0);
 	cam.SetAABBMinX(18, -24752.0);
 	cam.SetAABBMaxZ(18, 40050.0);
 	cam.SetAABBMinZ(18, 28525.0);
 
-	//Bookshop 440 East wall next to broadwalk
+	//440 East wall next to broadwalk
 	cam.SetAABBMaxX(19, 0.0);
 	cam.SetAABBMinX(19, -1192.0);
 	cam.SetAABBMaxZ(19, 40050.0);
 	cam.SetAABBMinZ(19, 28525.0);
 
-	//Bookshop 440 North wall next to broadwalk
+	//440 North wall next to broadwalk
 	cam.SetAABBMaxX(20, -1192.0);
 	cam.SetAABBMinX(20, -20952.0);
 	cam.SetAABBMaxZ(20, 31550.0);
@@ -1775,6 +1779,8 @@ void DrawBackdrop()
 	DisplayBoardwalk440SouthWallFacade();
 	DisplayBoardwalk440EastFacade();
 	DisplayBoardwalk440WestFacade();
+	DisplayBoardwalk440WestFacadeLedge();
+	DisplayBoardwalk440EastFacadeLedge();
 
 
 	if (lightsOn) DisplayLights ();
@@ -3204,6 +3210,80 @@ void DrawBoardwalk440WestFacade()
 {
 	//tp.CreateDisplayList(XZ, 2025, 128.0, 256.0, -19052.0 - 128.0, 10000.0 + 1140.0, 41025.0 - 2280.0 + 384.0, 2.0, 7.42);
 	tp.CreateDisplayList(YZ, 2032, 128.0, 256.0, -19052.0, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 2.0, 7.42);
+}
+
+void DisplayBoardwalk440WestFacadeLedge()
+{
+	GLfloat intraPost;
+
+	intraPost = 0;
+	for (int ii = 0; ii < 5; ii++)
+	{
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST_2));
+		glPushMatrix();
+			glTranslatef(0.0, 0.00, intraPost);
+			glCallList(2033);
+		glPopMatrix();
+		glPushMatrix();
+			glTranslatef(0.0, 64.0, intraPost);
+			glCallList(2033);
+		glPopMatrix();
+		glPushMatrix();
+			glTranslatef(0.0, 0.00, intraPost);
+			glCallList(2034);
+		glPopMatrix();
+		glPushMatrix();
+			glTranslatef(128.0, 0.0, intraPost);
+			glCallList(2034);
+		glPopMatrix();
+
+		intraPost -= 1900;
+	}
+
+}
+
+
+void DrawBoardwalk440WestFacadeLedge()
+{
+	tp.CreateDisplayList(XZ, 2033, 128.0, 256.0, -19052.0 - 64, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 1, 7.42);
+	tp.CreateDisplayList(YZ, 2034, 128.0, 256.0, -19052.0 - 64, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 0.5, 7.42);
+}
+
+void DisplayBoardwalk440EastFacadeLedge()
+{
+	GLfloat intraPost;
+
+	intraPost = 0;
+	for (int ii = 0; ii < 5; ii++)
+	{
+		glBindTexture(GL_TEXTURE_2D, tp.GetTexture(MAIN_POST_2));
+		glPushMatrix();
+		glTranslatef(0.0, 0.00, intraPost);
+		glCallList(2035);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(0.0, 64.0, intraPost);
+		glCallList(2035);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(0.0, 0.00, intraPost);
+		glCallList(2036);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(128.0, 0.0, intraPost);
+		glCallList(2036);
+		glPopMatrix();
+
+		intraPost -= 1900;
+	}
+
+}
+
+
+void DrawBoardwalk440EastFacadeLedge()
+{
+	tp.CreateDisplayList(XZ, 2035, 128.0, 256.0, -3093.0 + 64, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 1, 7.42);
+	tp.CreateDisplayList(YZ, 2036, 128.0, 256.0, -3093.0 + 64, 10000.0 + 1140.0 + 128.0 + 128.0 + 128.0 + 128.0 + 128.0, 41025.0 - 2280.0 + 384.0, 0.5, 7.42);
 }
 
 
@@ -5986,6 +6066,8 @@ void CreateTextureList()
 	DrawBoardwalk440SouthWallFacade();
 	DrawBoardwalk440EastFacade();
 	DrawBoardwalk440WestFacade();
+	DrawBoardwalk440WestFacadeLedge();
+	DrawBoardwalk440EastFacadeLedge();
 }
 
 //--------------------------------------------------------------------------------------
