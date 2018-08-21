@@ -166,7 +166,7 @@ void TexturedPolygons::CreateXtoYTextureList(const GLdouble &xImgSize, const GLd
 }
 
 //--------------------------------------------------------------------------------------
-//  Create display list with image plotted on Y to A axis
+//  Create display list with image plotted on Y to Z axis
 //--------------------------------------------------------------------------------------
 
 void TexturedPolygons::CreateYtoZTextureList(const GLdouble &yImgSize, const GLdouble &zImgSize, 

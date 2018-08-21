@@ -2685,23 +2685,34 @@ void DrawBoardwalk440SouthWall()
 
 
 //--------------------------------------------------------------------------------------
-//  Boardwalk Wall
+//  Boardwalk East Wall
 //--------------------------------------------------------------------------------------
 void DisplayBoardwalk440EastWall()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
-	glCallList(2007);
+	glCallList(2040);
+	glCallList(2041);
+	glCallList(2042);
 
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2043);
+	glCallList(2044);
+	glCallList(2045);
 }
 
 void DrawBoardwalk440EastWall()
 {
-	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 74.0);	// 440 East wall
+	tp.CreateDisplayList(YZ, 2040, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 64.0);	// 440 East wall
+	tp.CreateDisplayList(YZ, 2041, 128.0, 128.0, 88.0, 10000.0, 39742.0, 20.71, 10.0);
+	tp.CreateDisplayList(YZ, 2042, 128.0, 128.0, -1192.0, 10000.0, 40766.0, 20.71, 3.10);
+
+	tp.CreateDisplayList(XY, 2043, 128.0, 128.0, -1192.0, 10000.0, 39742.0, 10.0, 20.71);
+	tp.CreateDisplayList(XY, 2044, 128.0, 128.0, -1192.0, 10000.0, 40766.0, 10.0, 20.71);
+	tp.CreateDisplayList(XY, 2045, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
 }
 
-
 //--------------------------------------------------------------------------------------
-//  Boardwalk Wall
+//  Boardwalk West Wall
 //--------------------------------------------------------------------------------------
 void DisplayBoardwalk440WestWall()
 {
@@ -5969,7 +5980,7 @@ void CreateTextureList()
 	DrawBoardwalk440EastPaving(); // 2004
 	DrawBoardwalk440NorthWall(); // 2005
 	DrawBoardwalk440SouthWall(); // 2006
-	DrawBoardwalk440EastWall(); // 2007
+	DrawBoardwalk440EastWall(); // 2040-2045
 	DrawBoardwalk440WestWall(); // 2008
 	DrawBoardwalk440SouthPosts(); // 2009 - 2010
 	DrawBoardwalk440WestPosts(); // 2011 - 2012
