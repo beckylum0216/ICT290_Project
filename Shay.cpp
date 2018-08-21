@@ -1154,6 +1154,7 @@ void Shay::DrawBackdrop()
 	DisplayBoardwalk440EastFacade();
 	DisplayBoardwalk440WestFacade();
 	DisplayBoardwalk440CorridorWallEast();
+	DisplayBoardwalk440CorridorWallWest();
 
 	DisplayBoardwalk440WestFacadeLedge();
 	DisplayBoardwalk440EastFacadeLedge();
@@ -4740,6 +4741,7 @@ void Shay::CreateTextureList()
 	DrawBoardwalk440WestFacadeLedge();
 	DrawBoardwalk440EastFacadeLedge();
 	DrawBoardwalk440CorridorWallEast();
+	DrawBoardwalk440CorridorWallWest();
 
 }
 
@@ -4883,7 +4885,7 @@ void Shay::DisplayBoardwalk440WestWall()
 
 void Shay::DrawBoardwalk440WestWall()
 {
-	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 20.71, 74.0);	// 440 West wall
+	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 20.71, 74.06);	// 440 West wall
 }
 
 void Shay::DisplayBoardwalk440SouthPosts()
@@ -5452,6 +5454,17 @@ void Shay::DisplayBoardwalk440CorridorWallEast()
 void Shay::DrawBoardwalk440CorridorWallEast()
 {
 	tp.CreateDisplayList(XY, 2037, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
+}
+
+void Shay::DisplayBoardwalk440CorridorWallWest()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2038);
+}
+
+void Shay::DrawBoardwalk440CorridorWallWest()
+{
+	tp.CreateDisplayList(XY, 2038, 128.0, 128.0, -25029.0, 10000.0, 41027.0, 31.87, 20.71);
 }
 
 /* 
