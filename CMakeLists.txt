@@ -46,6 +46,8 @@ add_executable(
         SoundTime.h
         texturedPolygons.cpp
         texturedPolygons.h
+		Shay.h 
+		Shay.cpp
 		)
 
 #find_file(SDL2_INCLUDE_DIR NAMES SDL.h HINTS SDL2)
