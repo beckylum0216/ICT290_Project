@@ -5432,7 +5432,7 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 }
 
 
-void Shay::Testy()
+void Shay::Test()
 {
 
 }

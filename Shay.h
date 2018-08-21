@@ -398,7 +398,9 @@ public:
 	void DisplayBoardwalk440WestFacadeLedge();
 	void DrawBoardwalk440WestFacadeLedge();
 
-	void Testy();
+
+	void Test();
+
 	//-----------------------------------------------------
 
 	// loads images and creates texture
