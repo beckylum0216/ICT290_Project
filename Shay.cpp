@@ -1165,8 +1165,13 @@ void Shay::DrawBackdrop()
 
 	DisplayBoardwalk440WestFacadeLedge();
 	DisplayBoardwalk440EastFacadeLedge();
+
 	Display440BoardwalkEastSteps();
-	
+	Display440BoardwalkWestSteps();
+
+	DisplayBoardwalk440EastStairwell();
+	DisplayBoardwalk440WestStairwell();
+
 	if (lightsOn) 
 		DisplayLights ();
 }
@@ -4748,7 +4753,12 @@ void Shay::CreateTextureList()
 
 	DrawBoardwalk440WestFacadeLedge();
 	DrawBoardwalk440EastFacadeLedge();
+
 	Draw440BoardwalkEastSteps();
+	Draw440BoardwalkWestSteps();
+
+	DrawBoardwalk440EastStairwell();
+	DrawBoardwalk440WestStairwell();
 
 }
 
@@ -4877,7 +4887,7 @@ void Shay::DisplayBoardwalk440EastWall()
 
 void Shay::DrawBoardwalk440EastWall()
 {
-	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 74.0);	// 440 East wall
+	tp.CreateDisplayList(YZ, 2007, 128.0, 128.0, -1192.0, 10000.0, 31550.0, 20.71, 63.82);	// 440 East wall
 }
 
 //--------------------------------------------------------------------------------------
@@ -4892,7 +4902,7 @@ void Shay::DisplayBoardwalk440WestWall()
 
 void Shay::DrawBoardwalk440WestWall()
 {
-	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 20.71, 74.0);	// 440 West wall
+	tp.CreateDisplayList(YZ, 2008, 128.0, 128.0, -20952.0, 10000.0, 31550.0, 20.71, 63.82);	// 440 West wall
 }
 
 void Shay::DisplayBoardwalk440SouthPosts()
@@ -5455,65 +5465,41 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 void Shay::Display440BoardwalkEastSteps()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
-	for (int i = 2100; i < 2109; i++) glCallList(i);
+	for (int i = 2110; i < 2120; i++) glCallList(i);
 
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
-	for (i = 2200; i < 2209; i++) glCallList(i);
+	for (int i = 2120; i < 2130; i++) glCallList(i);
 
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
-	for (i = 2300; i < 2309; i++) glCallList(i);
+	for (int i = 2130; i < 2140; i++) glCallList(i);
 
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
-	for (i = 2400; i < 2409; i++) glCallList(i);
+	for (int i = 2140; i < 2150; i++) glCallList(i);
 
-	/*
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY));
-	step = 0.0;
-	step2 = -51.0;
-	for (i = 0; i < 10; i++)
-	{
-		glPushMatrix();
-		glTranslatef(step, step2, 0.0);
-		glCallList(206);
-		glPopMatrix();
-		glPushMatrix();
-		glTranslatef(step, step2, 965.0);
-		glCallList(206);
-		glPopMatrix();
-		step += 128.0;
-		step2 += -51.0;
-	}
-
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY_TOP));
-	glCallList(207);
-	glPushMatrix();
-	glTranslatef(0.0, 0.0, 965.0);
-	glCallList(207);
-	glPopMatrix();
-	*/
 }
 
 void Shay::Draw440BoardwalkEastSteps()
 {
+	//first flight stairs
 	step = 10500.0;
 	stepLength = 0.0;
-	for (int i = 2000; i < 2009; i++)
+	for (int i = 2100; i < 2110; i++)
 	{
-		tp.CreateDisplayList(XZ ,i +100, 64, 128.0, -5000.0 + stepLength, step, 35000 , 1, 4.45);
-		tp.CreateDisplayList(YZ, i + 200, 64.0, 128.0, -5000.0 + stepLength, step - 32.0 , 35000, 0.5, 4.45);
+		tp.CreateDisplayList(XZ ,i +10, 64, 128.0, -5000.0 + stepLength, step, 35000 , 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 20, 64.0, 128.0, -5000.0 + stepLength, step - 32.0 , 35000, 0.5, 4.45);
 		//tp.CreateDisplayList(YZ, i + 200, 32.0, 64.0, -5005.0 + stepLength, step - 64.0 + 32.0, 35000, 1, 17.82);
 		step -= 32.0;
 		stepLength -= 64.0;
 		
 	}
 
-	
+	// second flight stairs
 	step = 10500;
 	stepLength = 0.0;
-	for (i = 2000; i < 2009; i++)
+	for (i = 2100; i < 2110; i++)
 	{
-		tp.CreateDisplayList(XZ, i + 300, 64.0, 128.0, -5000.0 - stepLength, step, 40000.0, 1, 4.45);
-		tp.CreateDisplayList(YZ, i + 400, 64.0, 128.0, -5000.0 - stepLength + 64.0, step - 32.0, 40000.0 , 0.5, 4.45);
+		tp.CreateDisplayList(XZ, i + 30, 64.0, 128.0, -5000.0 - stepLength, step, 40000.0, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 40, 64.0, 128.0, -5000.0 - stepLength + 64.0, step - 32.0, 40000.0 , 0.5, 4.45);
 		step -= 32.0;
 		stepLength -= 64.0;
 	}
@@ -5522,4 +5508,85 @@ void Shay::Draw440BoardwalkEastSteps()
 	//tp.CreateDisplayList(XZ, 206, 128.0, 1024.0, 34508.0, 10000.0, 41127, 1.0, 0.942);
 	//tp.CreateDisplayList(XZ, 207, 256.0, 1024.0, 34352.0, 10000.0, 41127, 0.609, 0.942);
 
+}
+
+void Shay::Display440BoardwalkWestSteps()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
+	for (int i = 2210; i < 2220; i++) glCallList(i);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
+	for (int i = 2220; i < 2230; i++) glCallList(i);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
+	for (int i = 2230; i < 2240; i++) glCallList(i);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
+	for (int i = 2240; i < 2250; i++) glCallList(i);
+
+}
+
+void Shay::Draw440BoardwalkWestSteps()
+{
+	//first flight stairs
+	step = 10500.0;
+	stepLength = 0.0;
+	for (int i = 2200; i < 2210; i++)
+	{
+		tp.CreateDisplayList(XZ, i + 10, 64.0, 128.0, -7000.0 + stepLength, step, 35000, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 20, 64.0, 128.0, -7000.0 + stepLength, step - 32.0, 35000, 0.5, 4.45);
+		//tp.CreateDisplayList(YZ, i + 200, 32.0, 64.0, -5005.0 + stepLength, step - 64.0 + 32.0, 35000, 1, 17.82);
+		step -= 32.0;
+		stepLength -= 64.0;
+
+	}
+
+	// second flight stairs
+	step = 10500;
+	stepLength = 0.0;
+	for (i = 2200; i < 2210; i++)
+	{
+		tp.CreateDisplayList(XZ, i + 30, 64.0, 128.0, -7000.0 - stepLength, step, 40000.0, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 40, 64.0, 128.0, -7000.0 - stepLength + 64.0, step - 32.0, 40000.0, 0.5, 4.45);
+		step -= 32.0;
+		stepLength -= 64.0;
+	}
+
+	// steps next to GCL1
+	//tp.CreateDisplayList(XZ, 206, 128.0, 1024.0, 34508.0, 10000.0, 41127, 1.0, 0.942);
+	//tp.CreateDisplayList(XZ, 207, 256.0, 1024.0, 34352.0, 10000.0, 41127, 0.609, 0.942);
+
+}
+
+
+
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Wall
+//--------------------------------------------------------------------------------------
+void Shay::DisplayBoardwalk440EastStairwell()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
+	glCallList(2038);
+
+}
+
+void Shay::DrawBoardwalk440EastStairwell()
+{
+	tp.CreateDisplayList(YZ, 2038, 128.0, 128.0, -1192.0, 10000.0, 40860.0, 20.71, 1.48);	// 440 East wall
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Wall
+//--------------------------------------------------------------------------------------
+void Shay::DisplayBoardwalk440WestStairwell()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
+	glCallList(2039);
+
+}
+
+void Shay::DrawBoardwalk440WestStairwell()
+{
+	tp.CreateDisplayList(YZ, 2039, 128.0, 128.0, -20952.0, 10000.0, 40860.0, 20.71, 1.48);	// 440 West wall
 }
