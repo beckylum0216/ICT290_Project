@@ -5455,16 +5455,16 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 void Shay::Display440BoardwalkEastSteps()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
-	for (int i = 2100; i < 2104; i++) glCallList(i);
+	for (int i = 2100; i < 2109; i++) glCallList(i);
 
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
-	for (i = 2200; i < 2204; i++) glCallList(i);
+	for (i = 2200; i < 2209; i++) glCallList(i);
 
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEPTOPSTRIPE_XY));
-	for (i = 2300; i < 2304; i++) glCallList(i);
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
+	for (i = 2300; i < 2309; i++) glCallList(i);
 
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_STEPS_EDGE_2));
-	for (i = 2400; i < 2404; i++) glCallList(i);
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_STEP_XY));
+	for (i = 2400; i < 2409; i++) glCallList(i);
 
 	/*
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(STEPS_LIBRARY));
@@ -5497,27 +5497,27 @@ void Shay::Draw440BoardwalkEastSteps()
 {
 	step = 10500.0;
 	stepLength = 0.0;
-	for (int i = 2100; i < 2104; i++)
+	for (int i = 2000; i < 2009; i++)
 	{
-		tp.CreateDisplayList(XZ ,i , 64, 128.0, -5000.0 + stepLength, step, 35000 , 1, 4.45);
-		tp.CreateDisplayList(YZ, i + 100, 64.0, 128.0, -5000.0 + stepLength, step - 32.0 , 35000, 0.5, 4.45);
+		tp.CreateDisplayList(XZ ,i +100, 64, 128.0, -5000.0 + stepLength, step, 35000 , 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 200, 64.0, 128.0, -5000.0 + stepLength, step - 32.0 , 35000, 0.5, 4.45);
 		//tp.CreateDisplayList(YZ, i + 200, 32.0, 64.0, -5005.0 + stepLength, step - 64.0 + 32.0, 35000, 1, 17.82);
 		step -= 32.0;
 		stepLength -= 64.0;
 		
 	}
 
-	/*
-	step = 11000.0;
-	stepLength = 8882.0;
-	for (i = 2051; i < 2054; i++)
+	
+	step = 10500;
+	stepLength = 0.0;
+	for (i = 2000; i < 2009; i++)
 	{
-		tp.CreateDisplayList(XZ, i, 1024.0, 512.0, -4093.0, step, stepLength + 41025.0, 2.2, 1.0);
-		tp.CreateDisplayList(XY, i + 3, 64.0, 64.0, -4093.0, step - 64.0, stepLength + 41025.0, 35.0, 1.0);
-		step -= 239.0;
-		stepLength -= 1068.0;
+		tp.CreateDisplayList(XZ, i + 300, 64.0, 128.0, -5000.0 - stepLength, step, 40000.0, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 400, 64.0, 128.0, -5000.0 - stepLength + 64.0, step - 32.0, 40000.0 , 0.5, 4.45);
+		step -= 32.0;
+		stepLength -= 64.0;
 	}
-	*/
+	
 	// steps next to GCL1
 	//tp.CreateDisplayList(XZ, 206, 128.0, 1024.0, 34508.0, 10000.0, 41127, 1.0, 0.942);
 	//tp.CreateDisplayList(XZ, 207, 256.0, 1024.0, 34352.0, 10000.0, 41127, 0.609, 0.942);
