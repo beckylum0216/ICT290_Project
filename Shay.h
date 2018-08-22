@@ -346,6 +346,9 @@ public:
 	void DisplayBoardwalk440WestFacadeLedge();
 	void DisplayBoardwalk440EastFacadeLedge();
 	void Display440BoardwalkEastSteps();
+	void DisplayBWRoofSouth();
+	void DisplayBWRoofEast();
+	void DisplayBWRoofWest();
 	//---------------------------------------------------
 
 	// calls functions to create display lists (below)
