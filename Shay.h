@@ -270,6 +270,13 @@
 //Banner
 #define THE_BANNER					223
 
+#define BOARDWALK_440_STEP_XY		224
+#define BOARDWALK_440_STEP_YZ		225
+#define BOARDWALK_440_STEPTOPSTRIPE_XY 226
+#define BOARDWALK_440_STEPTOPSTRIPE_YZ 227
+
+
+
 class Shay {
 public:
 	Shay();
