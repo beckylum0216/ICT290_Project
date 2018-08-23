@@ -5641,26 +5641,26 @@ void Shay::Display440BoardwalkWestSteps()
 void Shay::Draw440BoardwalkWestSteps()
 {
 	//first flight stairs
-	step = 10500.0;
+	step = 10000.0 + 1280;
 	stepLength = 0.0;
 	for (int i = 2200; i < 2210; i++)
 	{
-		tp.CreateDisplayList(XZ, i + 10, 64.0, 128.0, -7000.0 + stepLength, step, 35000, 1, 4.45);
-		tp.CreateDisplayList(YZ, i + 20, 64.0, 128.0, -7000.0 + stepLength, step - 32.0, 35000, 0.5, 4.45);
+		tp.CreateDisplayList(XZ, i + 10, 64.0, 128.0, -20952.0 - 64.0+ stepLength, step, 40860.0 - 1140.0, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 20, 64.0, 128.0, -20952.0 - 64.0+ stepLength, step - 64.0, 40860.0 - 1140.0, 1, 4.45);
 		//tp.CreateDisplayList(YZ, i + 200, 32.0, 64.0, -5005.0 + stepLength, step - 64.0 + 32.0, 35000, 1, 17.82);
-		step -= 32.0;
+		step -= 64.0;
 		stepLength -= 64.0;
 
 	}
 
 	// second flight stairs
-	step = 10500;
+	step = 10000 + 640.0;
 	stepLength = 0.0;
 	for (i = 2200; i < 2210; i++)
 	{
-		tp.CreateDisplayList(XZ, i + 30, 64.0, 128.0, -7000.0 - stepLength, step, 40000.0, 1, 4.45);
-		tp.CreateDisplayList(YZ, i + 40, 64.0, 128.0, -7000.0 - stepLength + 64.0, step - 32.0, 40000.0, 0.5, 4.45);
-		step -= 32.0;
+		tp.CreateDisplayList(XZ, i + 30, 64.0, 128.0, -20952.0 - 640.0 - stepLength, step, 40860.0 - 570.0, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 40, 64.0, 128.0, -20952.0 - 640.0 - stepLength + 64.0, step - 64.0, 40860.0 - 570.0, 1, 4.45);
+		step -= 64.0;
 		stepLength -= 64.0;
 	}
 
@@ -5703,11 +5703,19 @@ void Shay::DrawBoardwalk440EastStairwell()
 void Shay::DisplayBoardwalk440WestStairwell()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
-	glCallList(2050);
+	glCallList(2043);
+	glCallList(2044);
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
+	glCallList(2045);
+	glCallList(2046);
 
 }
 
 void Shay::DrawBoardwalk440WestStairwell()
 {
-	tp.CreateDisplayList(YZ, 2050, 128.0, 128.0, -20952.0, 10000.0, 40860.0, 20.71, 1.48);	// 440 West wall
+	tp.CreateDisplayList(YZ, 2043, 128.0, 128.0, -20952.0, 10000.0, 40860.0, 20.71, 1.48);
+	tp.CreateDisplayList(YZ, 2044, 128.0, 128.0, -20952.0 - 1140.0, 10000.0, 40860.0 - 1140.0, 20.71, 8.91);
+	tp.CreateDisplayList(XY, 2045, 128.0, 128.0, -20952.0 - 1140.0, 10000.0, 40860.0, 8.91, 20.71);
+	tp.CreateDisplayList(XY, 2046, 128.0, 128.0, -20952.0 - 1140.0, 10000.0, 40860.0 - 1140.0, 8.91, 20.71);	// 440 West wall
 }
