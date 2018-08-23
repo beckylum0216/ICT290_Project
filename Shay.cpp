@@ -20,13 +20,13 @@ void Shay::Init()
 	//cam.Position(32720.0, 9536.0, 4800.0, 180.0);
 	//cam.Position(2608.0, 10500.0, 41025.0, 180.0);
 
-	/* 
+	//* 
 	cam.Position(32720.0, 9536.0, //original camera position
 		4800.0, 180.0);
 	/*/
 	cam.Position(-1192.0, 10350.0, //camera in 400 corridor
 		42060.0, 180.0);
-	//*/ comment toggle
+	//*/ //comment toggle
 
 	CreatePlains();
 
@@ -3022,6 +3022,19 @@ void Shay::DrawRoof()
 			glVertex3f(2608.0, 12140.72, 43095.2);
 		glEnd();
 	glEndList();
+	// 440 east rooftop
+	glNewList(2046, GL_COMPILE);
+		glBegin(GL_QUADS);
+			glTexCoord2f(0.0, 0.0);
+			glVertex3f(31740.0, 12564.0, 31550.0);
+			glTexCoord2f(0.0, 257.9);
+			glVertex3f(31740.0, 12564.0, 31550.0 + 9472.0);
+			glTexCoord2f(2.0, 273.4);
+			glVertex3f(33848.0, 13340.72, 31550.0 + 9472.0);
+			glTexCoord2f(2.0, 0.0);
+			glVertex3f(33848.0, 13340.72, 31550.0);
+		glEnd();
+		glEndList();
 	// Chanc Side Planks
 	glNewList(250, GL_COMPILE);
 		glBegin(GL_QUADS);
@@ -4729,7 +4742,7 @@ void Shay::CreateTextureList()
 	DrawMainPosts ();			// 18-19, 51-52
 	DrawPavement ();			// 28, 73-94, 240-249, 428, 436
 	DrawBricks ();				// 101-110, 112-169, 180-197, 200-201, 390-399, 430-434
-	DrawRoof();					// 1-10, 97-100, 170-179, 202-205, 214-222, 250-257, 296-299, 426-427
+	DrawRoof();					// 1-10, 97-100, 170-179, 202-205, 214-222, 250-257, 296-299, 426-427, 2046
 	DrawEntranceSteps ();		// 258-295, 206-207
 	DrawExtras ();				// 300-349, 388, 395, 419-421, 429, 435
 	DrawLargerTextures ();		// 350-375, 379-387, 389, 414-418, 422-423, 450-453
@@ -4870,8 +4883,8 @@ void Shay::DisplayBWRoofEast()
 	step = -35000;
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(ROOF_TOP));
 	glPushMatrix();
-	glTranslatef(step, 1200.0, -200);
-	glCallList(214);
+	glTranslatef(step, 0, 0);
+	glCallList(2046);
 	glPopMatrix();
 }
 
@@ -5559,6 +5572,10 @@ void Shay::DrawBoardwalk440CorridorWallEast()
 {
 	tp.CreateDisplayList(XY, 2037, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
 }
+
+//--------------------------------------------------------------------------------------
+//  Corridor Wall West
+//--------------------------------------------------------------------------------------
 
 void Shay::DisplayBoardwalk440CorridorWallWest()
 {
