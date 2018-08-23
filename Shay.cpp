@@ -5610,8 +5610,8 @@ void Shay::Draw440BoardwalkEastSteps()
 	stepLength = 0.0;
 	for (i = 2100; i < 2110; i++)
 	{
-		tp.CreateDisplayList(XZ, i + 30, 64.0, 128.0, -1192.0 + 576 - stepLength, step, 40860.0 -1140.0, 1, 4.45);
-		tp.CreateDisplayList(YZ, i + 40, 64.0, 128.0, -1192.0 + 576 - stepLength + 64.0, step - 64.0, 40860.0 -1140.0, 1, 4.45);
+		tp.CreateDisplayList(XZ, i + 30, 64.0, 128.0, -1192.0 - stepLength, step, 40860.0 -1140.0, 1, 4.45);
+		tp.CreateDisplayList(YZ, i + 40, 64.0, 128.0, -1192.0 - stepLength + 64.0, step - 64.0, 40860.0 -1140.0, 1, 4.45);
 		step -= 64.0;
 		stepLength -= 64.0;
 	}
