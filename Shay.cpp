@@ -177,8 +177,8 @@ void Shay::UpKey(unsigned char key, int x, int y) {
 			cam.DirectionLR(0);
 		break;
 		// look left up or down
-		//case 'a' :
-		//case 'A' :
+		case 'e' :
+		case 'E' :
 		case 'q' :
 		case 'Q' :
 			cam.DirectionLookUD(0);
@@ -339,10 +339,10 @@ void Shay::CreateBoundingBoxes()
 	cam.SetAABBMinZ(18, 28525.0);
 
 	//440 East wall next to broadwalk
-	cam.SetAABBMaxX(19, 0.0);
+	/*cam.SetAABBMaxX(19, 0.0);
 	cam.SetAABBMinX(19, -1192.0);
 	cam.SetAABBMaxZ(19, 40050.0);
-	cam.SetAABBMinZ(19, 28525.0);
+	cam.SetAABBMinZ(19, 28525.0);*/
 
 	//440 North wall next to broadwalk
 	cam.SetAABBMaxX(20, -1192.0);
@@ -397,6 +397,45 @@ void Shay::CreatePlains()
 			step -= 48.0;
 		}
 	}
+
+	//Broadwalk 44 Building
+	//Courtyard floor
+	cam.SetPlains(FLAT_PLAIN, 2000, -26000, 10450, 10450, 30000, 43000);
+	//Upstairs
+	// - East wall
+
+	// - West wall
+
+	// - South wall
+
+	//East stairwell
+	// - first flight
+	step = 10450;
+	stepLength = -1256;
+	for (i = 0; i < 10; i++) {
+		cam.SetPlains(FLAT_PLAIN, stepLength, stepLength + 64, step, step, 40290, 40860);
+
+		step += 64;
+		stepLength += 64;
+	}
+	// - landing
+	cam.SetPlains(FLAT_PLAIN, stepLength, stepLength + 128, step, step, 39720, 40860);
+	// - second flight
+	step = 11090;
+	stepLength = -616;
+	for (i = 0; i < 10; i++) {
+		cam.SetPlains(FLAT_PLAIN, stepLength, stepLength - 64, step, step, 39720, 40290);
+
+		step += 64;
+		stepLength -= 64;
+	}
+
+	//West stairwell
+	// - first flight
+
+	// - landing
+
+	// - second flight
 
 	// temp plain to take down to ECL1
 	cam.SetPlains (ZY_PLAIN, 3200.0, 4800.0 , 10450.0, 9370.0, 53400.0, 57900.0);
