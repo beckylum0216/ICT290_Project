@@ -421,13 +421,13 @@ void Shay::CreatePlains()
 	// - landing
 	cam.SetPlains(FLAT_PLAIN, stepLength, stepLength + 128, step, step, 39720, 40860);
 	// - second flight
-	step = 11090;
-	stepLength = -616;
+	step = 11730;
+	stepLength = -1256;
 	for (i = 0; i < 10; i++) {
-		cam.SetPlains(FLAT_PLAIN, stepLength, stepLength - 64, step, step, 39720, 40290);
+		cam.SetPlains(FLAT_PLAIN, stepLength, stepLength + 64, step, step, 39720, 40290);
 
-		step += 64;
-		stepLength -= 64;
+		step -= 64;
+		stepLength += 64;
 	}
 
 	//West stairwell
