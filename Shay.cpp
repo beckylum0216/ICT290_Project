@@ -335,7 +335,7 @@ void Shay::CreateBoundingBoxes()
 	//440 West wall next to broadwalk
 	cam.SetAABBMaxX(18, -20952.0);
 	cam.SetAABBMinX(18, -24752.0);
-	cam.SetAABBMaxZ(18, 40050.0);
+	cam.SetAABBMaxZ(18, 39050.0);
 	cam.SetAABBMinZ(18, 28525.0);
 
 	//440 East wall next to broadwalk
@@ -400,7 +400,7 @@ void Shay::CreatePlains()
 
 	//Broadwalk 44 Building
 	//Courtyard floor
-	cam.SetPlains(FLAT_PLAIN, 2000, -26000, 10450, 10450, 30000, 43000);
+	cam.SetPlains(FLAT_PLAIN, 2000, -20952, 10450, 10450, 30000, 43000);
 	//Upstairs
 	// - East wall
 
@@ -432,10 +432,29 @@ void Shay::CreatePlains()
 
 	//West stairwell
 	// - first flight
+	step = 11090;
+	stepLength = -20952 - 640;
+	for (i = 0; i < 10; i++)
+	{
+		cam.SetPlains(FLAT_PLAIN, stepLength, stepLength + 64, step, step, 40290, 40860);
 
+		step -= 64;
+		stepLength += 64;
+	}
 	// - landing
-
+	step = 11090;
+	stepLength = -20952 - 640 - 128;
+	cam.SetPlains(FLAT_PLAIN, stepLength, stepLength+128, step, step, 39720, 40860);
 	// - second flight
+	step = 11090;
+	stepLength = -20952 - 640;
+	for (i = 0; i < 10; i++)
+	{
+		cam.SetPlains(FLAT_PLAIN, stepLength, stepLength + 64, step, step, 39720, 40290);
+
+		step += 64;
+		stepLength += 64;
+	}
 
 	// temp plain to take down to ECL1
 	cam.SetPlains (ZY_PLAIN, 3200.0, 4800.0 , 10450.0, 9370.0, 53400.0, 57900.0);
