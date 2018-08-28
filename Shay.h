@@ -358,6 +358,9 @@ public:
 	void DisplayBWRoofSouth();
 	void DisplayBWRoofEast();
 	void DisplayBWRoofWest();
+	void Display440RoofNorth();
+
+	void Display440NorthExterior();
 
 	//---------------------------------------------------
 
@@ -426,6 +429,9 @@ public:
 
 	void DrawBoardwalk440EastStairwell();
 	void DrawBoardwalk440WestStairwell();
+
+	void Draw440RoofNorth();
+	void Draw440NorthExterior();
 
 	//-----------------------------------------------------
 
