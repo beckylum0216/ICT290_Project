@@ -270,6 +270,15 @@
 //Banner
 #define THE_BANNER					223
 
+#define BOARDWALK_440_STEP_XY		224
+#define BOARDWALK_440_STEP_YZ		225
+#define BOARDWALK_440_STEPTOPSTRIPE_XY 226
+#define BOARDWALK_440_STEPTOPSTRIPE_YZ 227
+#define BOARDWALK_440_1M_DOOR_XY 228
+#define BOARDWALK_440_1M_DOOR_YZ 229
+
+
+
 class Shay {
 public:
 	Shay();
@@ -335,11 +344,27 @@ public:
 	void DisplayBoardwalk440SouthWallFacade();
 	void DisplayBoardwalk440EastFacade();
 	void DisplayBoardwalk440WestFacade();
+
 	void DisplayBoardwalk440CorridorWallEast();
 	void DisplayBoardwalk440CorridorWallWest();
 
+	void DisplayBoardwalk440WestFacadeLedge();
 	void DisplayBoardwalk440EastFacadeLedge();
-	void DrawBoardwalk440EastFacadeLedge();
+
+	void Display440BoardwalkEastSteps();
+	void Display440BoardwalkWestSteps();
+
+	void DisplayBoardwalk440EastStairwell();
+	void DisplayBoardwalk440WestStairwell();
+
+	void DisplayBWRoofSouth();
+	void DisplayBWRoofEast();
+	void DisplayBWRoofWest();
+
+	void DisplayBoardwalk440WestDoors();
+	void DisplayBoardwalk440EastDoors();
+
+
 	//---------------------------------------------------
 
 	// calls functions to create display lists (below)
@@ -399,11 +424,17 @@ public:
 	void DrawBoardwalk440CorridorWallEast();
 	void DrawBoardwalk440CorridorWallWest();
 
-	void DisplayBoardwalk440WestFacadeLedge();
+	void DrawBoardwalk440EastFacadeLedge();
 	void DrawBoardwalk440WestFacadeLedge();
+	
+	void Draw440BoardwalkEastSteps();
+	void Draw440BoardwalkWestSteps();
 
+	void DrawBoardwalk440EastStairwell();
+	void DrawBoardwalk440WestStairwell();
 
-	void Test();
+	void DrawBoardwalk440WestDoors();
+	void DrawBoardwalk440EastDoors();
 
 	//-----------------------------------------------------
 
