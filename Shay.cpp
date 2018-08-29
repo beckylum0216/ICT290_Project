@@ -1,4 +1,5 @@
 #include "Shay.h"
+#include <iostream>
 
 Shay::Shay() {
 
@@ -42,6 +43,8 @@ void Shay::Init()
 
 void Shay::Draw() {
 	// check for movement
+
+	std::cout << "X: " << cam.GetLR() << " Y: " << cam.GetUD() << " Z: " << cam.GetFB() << std::endl;
 	cam.CheckCamera();
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1254,6 +1257,7 @@ void Shay::DrawBackdrop()
 
 	DisplayBoardwalk440WestDoors();
 	DisplayBoardwalk440EastDoors();
+	DisplayBroadwalkSouthDoors();
 
 	if (lightsOn) 
 		DisplayLights ();
@@ -4844,8 +4848,10 @@ void Shay::CreateTextureList()
 
 	DrawBoardwalk440EastStairwell();
 	DrawBoardwalk440WestStairwell();
+
 	DrawBoardwalk440WestDoors();
 	DrawBoardwalk440EastDoors();
+	DrawBroadwalkSouthDoors();
 
 }
 
@@ -5619,7 +5625,6 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 //--------------------------------------------------------------------------------------
 //  Corridor Wall East
 //--------------------------------------------------------------------------------------
-
 void Shay::DisplayBoardwalk440CorridorWallEast()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
@@ -5741,9 +5746,6 @@ void Shay::Draw440BoardwalkWestSteps()
 
 }
 
-
-
-
 //--------------------------------------------------------------------------------------
 //  Boardwalk Stairwell
 //--------------------------------------------------------------------------------------
@@ -5791,6 +5793,9 @@ void Shay::DrawBoardwalk440WestStairwell()
 	tp.CreateDisplayList(XY, 2046, 128.0, 128.0, -20952.0 - 1140.0, 10000.0, 40860.0 - 1140.0, 8.91, 20.71);	// 440 West wall
 }
 
+//--------------------------------------------------------------------------------------
+// Broadwalk doors
+//--------------------------------------------------------------------------------------
 void Shay::DisplayBoardwalk440WestDoors()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_1M_DOOR_YZ));
@@ -5822,4 +5827,22 @@ void Shay::DrawBoardwalk440EastDoors()
 	tp.CreateDisplayList(YZ, 2051, 640.0, 320.0, -1195.0, 10000.0, 31550.0 + 3040.0, 1, 1);
 	tp.CreateDisplayList(YZ, 2052, 640.0, 320.0, -1195.0, 10000.0, 31550.0 + 5700.0, 1, 1);
 	tp.CreateDisplayList(YZ, 2053, 640.0, 320.0, -1195.0, 10000.0, 31550.0 + 7600.0, 1, 1);
+}
+
+void Shay::DisplayBroadwalkSouthDoors() {
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_1M_DOOR_XY));
+	for (i = 2055; i < 2061; i++) {
+		glCallList(i);
+	}
+}
+
+void Shay::DrawBroadwalkSouthDoors() {
+	//tp.CreateDisplayList(XYZ, listNo, xImgSize, zImgSize, xStart, yStart, zStart, xTimes, zTime);
+	//tp.CreateDisplayList(XY, 2006, 128.0, 128.0, -25030.0, 10000.0, 43000.0, 214.0, 18.0);	// 440 South wall
+	tp.CreateDisplayList(XY, 2055, 320.0, 640.0, -22370, 10000.0, 42950.0, 1, 1); //Door 1
+	tp.CreateDisplayList(XY, 2056, 320.0, 640.0, -21290, 10000.0, 42950.0, 1, 1); //Door 2
+	tp.CreateDisplayList(XY, 2057, 320.0, 640.0, -17930, 10000.0, 42950.0, 1, 1); //Door 3
+	tp.CreateDisplayList(XY, 2058, 320.0, 640.0, -14950, 10000.0, 42950.0, 1, 1); //Door 4
+	tp.CreateDisplayList(XY, 2059, 320.0, 640.0, -12730, 10000.0, 42950.0, 1, 1); //Door 5
+	tp.CreateDisplayList(XY, 2060, 320.0, 640.0, -9750, 10000.0, 42950.0, 2, 1); //Door 6
 }
