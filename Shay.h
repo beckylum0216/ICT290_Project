@@ -363,7 +363,7 @@ public:
 
 	void DisplayBoardwalk440WestDoors();
 	void DisplayBoardwalk440EastDoors();
-
+	void DisplayBroadwalkSouthDoors();
 
 	//---------------------------------------------------
 
@@ -435,6 +435,7 @@ public:
 
 	void DrawBoardwalk440WestDoors();
 	void DrawBoardwalk440EastDoors();
+	void DrawBroadwalkSouthDoors();
 
 	//-----------------------------------------------------
 
