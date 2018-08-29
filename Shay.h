@@ -361,6 +361,7 @@ public:
 	void Display440RoofNorth();
 
 	void Display440NorthExterior();
+	void Display440NorthWindows();
 
 	//---------------------------------------------------
 
@@ -432,6 +433,7 @@ public:
 
 	void Draw440RoofNorth();
 	void Draw440NorthExterior();
+	void Draw440NorthWindows();
 
 	//-----------------------------------------------------
 
