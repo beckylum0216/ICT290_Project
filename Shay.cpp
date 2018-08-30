@@ -20,7 +20,7 @@ void Shay::Init()
 	//cam.Position(32720.0, 9536.0, 4800.0, 180.0);
 	//cam.Position(2608.0, 10500.0, 41025.0, 180.0);
 
-	//* 
+	/* 
 	cam.Position(32720.0, 9536.0, //original camera position
 		4800.0, 180.0);
 	/*/
@@ -1188,6 +1188,7 @@ void Shay::DrawBackdrop()
 	Display440RoofNorth();
 
 	Display440NorthExterior();
+	Display440NorthWindows();
 
 	if (lightsOn) 
 		DisplayLights ();
@@ -4794,6 +4795,7 @@ void Shay::CreateTextureList()
 
 	Draw440RoofNorth();
 	Draw440NorthExterior();
+	Draw440NorthWindows();
 
 }
 
@@ -5775,4 +5777,47 @@ void Shay::Draw440NorthExterior()
 {
 	tp.CreateDisplayList(XY, 2050, 128.0, 128.0, -20952.0, 10000.0, 27334.0, 155.0, 34.32); //north wall
 	tp.CreateDisplayList(YZ, 2051, 128.0, 128.0, -1112.0, 10000.0, 27334.0, 34.32, 32.9375); //east wall
+}
+
+void Shay::Display440NorthWindows()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WINDOW_1));
+	for (int floor = 0; floor < 3; floor++)
+	{
+		for (int window = 0; window < 14; window++)
+		{
+			glPushMatrix();
+				glTranslatef(1004*window, 1450*floor, 0);
+				glCallList(2055);
+			glPopMatrix();
+		}
+	}
+
+	glPushMatrix();
+		glTranslatef(1004 * -1, 1450 * 2, 0);
+		glCallList(2055);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(1004 * 14, 1450 * 2, 0);
+		glCallList(2055);
+	glPopMatrix();
+}
+
+void Shay::Draw440NorthWindows()
+{
+	GLdouble windWidth = 128 * 3;
+	GLdouble windHeight = 128 * 5;
+	glNewList(2055, GL_COMPILE);
+		glBegin(GL_POLYGON);
+			glTexCoord2f(0.0, 0.0);
+			glVertex3f(-17500.0, 10500, 31600.0);
+			glTexCoord2f(0.0, 1.0);
+			glVertex3f(-17500.0+windWidth, 10500, 31600.0);
+			glTexCoord2f(1.0, 1.0);
+			glVertex3f(-17500.0+windWidth, 10500+windHeight, 31600.0);
+			glTexCoord2f(1.0, 0.0);
+			glVertex3f(-17500.0, 10500+windHeight, 31600.0);
+		glEnd();
+	glEndList();
 }
