@@ -274,6 +274,8 @@
 #define BOARDWALK_440_STEP_YZ		225
 #define BOARDWALK_440_STEPTOPSTRIPE_XY 226
 #define BOARDWALK_440_STEPTOPSTRIPE_YZ 227
+#define BOARDWALK_440_1M_DOOR_XY 228
+#define BOARDWALK_440_1M_DOOR_YZ 229
 
 
 
@@ -363,6 +365,10 @@ public:
 	void Display440NorthExterior();
 	void Display440NorthWindows();
 
+	void DisplayBoardwalk440WestDoors();
+	void DisplayBoardwalk440EastDoors();
+	void DisplayBroadwalkSouthDoors();
+
 	//---------------------------------------------------
 
 	// calls functions to create display lists (below)
@@ -434,6 +440,10 @@ public:
 	void Draw440RoofNorth();
 	void Draw440NorthExterior();
 	void Draw440NorthWindows();
+
+	void DrawBoardwalk440WestDoors();
+	void DrawBoardwalk440EastDoors();
+	void DrawBroadwalkSouthDoors();
 
 	//-----------------------------------------------------
 
