@@ -5820,10 +5820,10 @@ void Shay::DisplayBoardwalk440WestDoors()
 
 void Shay::DrawBoardwalk440WestDoors()
 {
-	tp.CreateDisplayList(YZ, 2047, 640.0, 320.0, -20945.0, 10000.0, 31550.0 + 380.0, 1, 1);
-	tp.CreateDisplayList(YZ, 2048, 640.0, 320.0, -20945.0, 10000.0, 31550.0 + 1140.0, 1, 1);
-	tp.CreateDisplayList(YZ, 2049, 640.0, 320.0, -20945.0, 10000.0, 31550.0 + 3420.0, 1, 1);
-	tp.CreateDisplayList(YZ, 2050, 640.0, 320.0, -20945.0, 10000.0, 31550.0 + 5700.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2047, 640.0, 320.0, -20905.0, 10000.0, 31550.0 + 380.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2048, 640.0, 320.0, -20905.0, 10000.0, 31550.0 + 1140.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2049, 640.0, 320.0, -20905.0, 10000.0, 31550.0 + 3420.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2050, 640.0, 320.0, -20905.0, 10000.0, 31550.0 + 5700.0, 1, 1);
 }
 
 void Shay::DisplayBoardwalk440EastDoors()
@@ -5837,9 +5837,9 @@ void Shay::DisplayBoardwalk440EastDoors()
 
 void Shay::DrawBoardwalk440EastDoors()
 {
-	tp.CreateDisplayList(YZ, 2051, 640.0, 320.0, -1195.0, 10000.0, 31550.0 + 3040.0, 1, 1);
-	tp.CreateDisplayList(YZ, 2052, 640.0, 320.0, -1195.0, 10000.0, 31550.0 + 5700.0, 1, 1);
-	tp.CreateDisplayList(YZ, 2053, 640.0, 320.0, -1195.0, 10000.0, 31550.0 + 7600.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2051, 640.0, 320.0, -1232.0, 10000.0, 31550.0 + 3040.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2052, 640.0, 320.0, -1232.0, 10000.0, 31550.0 + 5700.0, 1, 1);
+	tp.CreateDisplayList(YZ, 2053, 640.0, 320.0, -1232.0, 10000.0, 31550.0 + 7600.0, 1, 1);
 }
 
 void Shay::DisplayBroadwalkSouthDoors() {
@@ -5861,14 +5861,15 @@ void Shay::DisplayBroadwalkSouthDoors() {
 void Shay::DrawBroadwalkSouthDoors() {
 	//tp.CreateDisplayList(XYZ, listNo, xImgSize, zImgSize, xStart, yStart, zStart, xTimes, zTime);
 	//tp.CreateDisplayList(XY, 2006, 128.0, 128.0, -25030.0, 10000.0, 43000.0, 214.0, 18.0);	// 440 South wall
-	tp.CreateDisplayList(XY, 2055, 320.0, 640.0, -22370, 10000.0, 42950.0, 1, 1); //Door 1
-	tp.CreateDisplayList(XY, 2056, 320.0, 640.0, -21290, 10000.0, 42950.0, 1, 1); //Door 2
-	tp.CreateDisplayList(XY, 2057, 320.0, 640.0, -17930, 10000.0, 42950.0, 1, 1); //Door 3
-	tp.CreateDisplayList(XY, 2058, 320.0, 640.0, -14950, 10000.0, 42950.0, 1, 1); //Door 4
-	tp.CreateDisplayList(XY, 2059, 320.0, 640.0, -12730, 10000.0, 42950.0, 1, 1); //Door 5
-	tp.CreateDisplayList(XY, 2060, 320.0, 640.0, -10130, 10000.0, 42950.0, 2, 1); //Door 6
+	tp.CreateDisplayList(XY_FLIP, 2055, 320.0, 640.0, -22370, 10000.0, 42950.0, 1, 1); //Door 1
+	tp.CreateDisplayList(XY_FLIP, 2056, 320.0, 640.0, -21290, 10000.0, 42950.0, 1, 1); //Door 2
+	tp.CreateDisplayList(XY_FLIP, 2057, 320.0, 640.0, -17930, 10000.0, 42950.0, 1, 1); //Door 3
+	tp.CreateDisplayList(XY_FLIP, 2058, 320.0, 640.0, -14950, 10000.0, 42950.0, 1, 1); //Door 4
+	tp.CreateDisplayList(XY_FLIP, 2059, 320.0, 640.0, -12730, 10000.0, 42950.0, 1, 1); //Door 5
+	tp.CreateDisplayList(XY_FLIP, 2060, 320.0, 640.0, -9750, 10000.0, 42950.0, 2, 1); //Door 6
 	tp.CreateDisplayList(XY, 2061, 1520.0, 760.0, -6450, 10000.0, 42950.0, 1, 1); //Bookshop window 1
 	tp.CreateDisplayList(XY, 2062, 1900.0, 760.0, -2650, 10000.0, 42950.0, 1, 1); //Bookshop window 2
 	tp.CreateDisplayList(XY, 2063, 760.0, 760.0, -730, 10000.0, 42950.0, 1, 1);	  //Bookshop doors
 	tp.CreateDisplayList(XY, 2064, 380.0, 760.0, 30, 10000.0, 42950.0, 1, 1);   //Bookshop window 3
+
 }
