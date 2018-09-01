@@ -1182,6 +1182,10 @@ void Shay::CreateTextures()
 	image = tp.LoadTexture("data/Boardwalk440DoorWestYZ.raw", 640, 320);
 	tp.CreateTexture(BOARDWALK_440_1M_DOOR_YZ, image, 640, 320);
 
+	//440 north windows
+	image = tp.LoadTexture("data/440window.raw", 460, 640);
+	tp.CreateTexture(BOARDWALK_440_WINDOW, image, 460, 640);
+
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);	
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -3092,7 +3096,7 @@ void Shay::DrawRoof()
 		glEnd();
 	glEndList();
 	// 440 east rooftop
-	glNewList(2046, GL_COMPILE);
+	glNewList(2062, GL_COMPILE);
 		glBegin(GL_QUADS);
 			glTexCoord2f(0.0, 0.0);
 			glVertex3f(31740.0, 12564.0, 31550.0);
@@ -4961,7 +4965,7 @@ void Shay::DisplayBWRoofEast()
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(ROOF_TOP));
 	glPushMatrix();
 	glTranslatef(step, 0, 0);
-	glCallList(2046);
+	glCallList(2062);
 	glPopMatrix();
 }
 
@@ -5917,7 +5921,7 @@ void Shay::Draw440NorthExterior()
 
 void Shay::Display440NorthWindows()
 {
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WINDOW_1));
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOARDWALK_440_WINDOW));
 	for (int floor = 0; floor < 3; floor++)
 	{
 		for (int window = 0; window < 14; window++)
@@ -5930,30 +5934,30 @@ void Shay::Display440NorthWindows()
 	}
 
 	glPushMatrix();
-		glTranslatef(1004 * -1, 1450 * 2, 0);
+		glTranslatef(1004 * -1, 1450 * 2, 0); //top left window
 		glCallList(2067);
 	glPopMatrix();
 
 	glPushMatrix();
-		glTranslatef(1004 * 14, 1450 * 2, 0);
+		glTranslatef(1004 * 14, 1450 * 2, 0); //top right window
 		glCallList(2067);
 	glPopMatrix();
 }
 
 void Shay::Draw440NorthWindows()
 {
-	GLdouble windWidth = 128 * 3;
-	GLdouble windHeight = 128 * 5;
+	GLdouble windWidth = 460; 
+	GLdouble windHeight = 640;
 	glNewList(2067, GL_COMPILE);
 		glBegin(GL_POLYGON);
-			glTexCoord2f(0.0, 0.0);
-			glVertex3f(-17500.0, 10500, 31600.0);
-			glTexCoord2f(0.0, 1.0);
-			glVertex3f(-17500.0+windWidth, 10500, 31600.0);
-			glTexCoord2f(1.0, 1.0);
-			glVertex3f(-17500.0+windWidth, 10500+windHeight, 31600.0);
-			glTexCoord2f(1.0, 0.0);
-			glVertex3f(-17500.0, 10500+windHeight, 31600.0);
+			glTexCoord2f(0.0, 0.0); //bottom left
+			glVertex3f(-17500.0, 10500, 31590.0); 
+			glTexCoord2f(0.0, 1.0); //bottom right
+			glVertex3f(-17500.0+windWidth, 10500, 31590.0); 
+			glTexCoord2f(1.0, 1.0); //top right
+			glVertex3f(-17500.0+windWidth, 10500+windHeight, 31590.0); 
+			glTexCoord2f(1.0, 0.0); //top left
+			glVertex3f(-17500.0, 10500+windHeight, 31590.0);
 		glEnd();
 	glEndList();
 }
