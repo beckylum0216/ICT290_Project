@@ -1182,12 +1182,10 @@ void Shay::CreateTextures()
 	image = tp.LoadTexture("data/Boardwalk440DoorWestYZ.raw", 640, 320);
 	tp.CreateTexture(BOARDWALK_440_1M_DOOR_YZ, image, 640, 320);
 
-<<<<<<< HEAD
 	//440 north windows
 	image = tp.LoadTexture("data/440window.raw", 460, 640);
 	tp.CreateTexture(BOARDWALK_440_WINDOW, image, 460, 640);
 
-=======
 	//Bookshop door
 	image = tp.LoadTexture("data/BookshopDoor.raw", 320, 320);
 	tp.CreateTexture(BOOKSHOP_DOOR, image, 320, 320);
@@ -1203,7 +1201,6 @@ void Shay::CreateTextures()
 	//Bookshop window 3
 	image = tp.LoadTexture("data/BookshopWindow3.raw", 320, 320);
 	tp.CreateTexture(BOOKSHOP_WINDOW_3, image, 320, 320);
->>>>>>> 0189460fbfc079370a5436b02423f01300d4068c
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);	
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
