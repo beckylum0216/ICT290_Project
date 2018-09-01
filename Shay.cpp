@@ -4872,6 +4872,8 @@ void Shay::CreateTextureList()
 
 	Draw440EastRoof();
 	Draw440WestRoof();
+	Draw440EastUpperWall();
+	Draw440WestUpperWall();
 
 }
 
@@ -6011,4 +6013,24 @@ void Shay::Draw440WestRoof()
 			glVertex3f(-18700.0 + +roofWidth, 12600.0 + roofHeight, 31550.0);
 		glEnd();
 	glEndList();
+}
+
+void Shay::Display440EastUpperWall()
+{
+
+}
+
+void Shay::Display440WestUpperWall()
+{
+
+}
+
+void Shay::Draw440EastUpperWall()
+{
+
+}
+
+void Shay::Draw440WestUpperWall()
+{
+
 }

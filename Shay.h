@@ -374,6 +374,9 @@ public:
 	void DisplayBoardwalk440EastDoors();
 	void DisplayBroadwalkSouthDoors();
 
+	void Display440EastUpperWall();
+	void Display440WestUpperWall();
+
 	//---------------------------------------------------
 
 	// calls functions to create display lists (below)
@@ -452,6 +455,8 @@ public:
 
 	void Draw440EastRoof();
 	void Draw440WestRoof();
+	void Draw440EastUpperWall();
+	void Draw440WestUpperWall();
 
 	//-----------------------------------------------------
 
