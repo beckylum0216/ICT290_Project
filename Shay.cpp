@@ -5974,16 +5974,21 @@ void Shay::Draw440NorthWindows()
 
 void Shay::Draw440EastRoof()
 {
+	GLfloat roofLength = 9472.0;
+	GLfloat roofRatio = 0.368;
+	GLfloat roofWidth = 2108;
+	GLfloat roofHeight = roofWidth * roofRatio;
+
 	glNewList(2310, GL_COMPILE);
 		glBegin(GL_QUADS);
-			glTexCoord2f(0.0, 0.0);
+			glTexCoord2f(0.0, 0.0); //bottom left
 			glVertex3f(-3260.0, 12564.0, 31550.0);
-			glTexCoord2f(0.0, 257.9);
-			glVertex3f(-3260.0, 12564.0, 31550.0 + 9472.0);
-			glTexCoord2f(2.0, 273.4);
-			glVertex3f(-1152, 13340.72, 31550.0 + 9472.0);
-			glTexCoord2f(2.0, 0.0);
-			glVertex3f(-1152, 13340.72, 31550.0);
+			glTexCoord2f(0.0, roofLength/128); //bottom right
+			glVertex3f(-3260.0, 12564.0, 31550.0 + roofLength);
+			glTexCoord2f(2.0, roofLength/128); //top right
+			glVertex3f(-3260.0 + roofWidth, 12564.0 + roofHeight, 31550.0 + roofLength);
+			glTexCoord2f(2.0, 0.0); //top left
+			glVertex3f(-3260.0 + +roofWidth, 12564.0 + roofHeight, 31550.0);
 		glEnd();
 	glEndList();
 }
