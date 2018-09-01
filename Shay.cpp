@@ -1189,7 +1189,7 @@ void Shay::CreateTextures()
 	//Bookshop door
 	image = tp.LoadTexture("data/BookshopDoor.raw", 320, 320);
 	tp.CreateTexture(BOOKSHOP_DOOR, image, 320, 320);
-
+	
 	//Bookshop window 1
 	image = tp.LoadTexture("data/BookshopWindow1.raw", 320, 320);
 	tp.CreateTexture(BOOKSHOP_WINDOW_1, image, 320, 320);
@@ -3108,19 +3108,6 @@ void Shay::DrawRoof()
 			glVertex3f(2608.0, 12140.72, 43095.2);
 		glEnd();
 	glEndList();
-	// 440 east rooftop
-	glNewList(2062, GL_COMPILE);
-		glBegin(GL_QUADS);
-			glTexCoord2f(0.0, 0.0);
-			glVertex3f(31740.0, 12564.0, 31550.0);
-			glTexCoord2f(0.0, 257.9);
-			glVertex3f(31740.0, 12564.0, 31550.0 + 9472.0);
-			glTexCoord2f(2.0, 273.4);
-			glVertex3f(33848.0, 13340.72, 31550.0 + 9472.0);
-			glTexCoord2f(2.0, 0.0);
-			glVertex3f(33848.0, 13340.72, 31550.0);
-		glEnd();
-	glEndList();
 	// Chanc Side Planks
 	glNewList(250, GL_COMPILE);
 		glBegin(GL_QUADS);
@@ -4883,6 +4870,9 @@ void Shay::CreateTextureList()
 	DrawBoardwalk440EastDoors();
 	DrawBroadwalkSouthDoors();
 
+	Draw440EastRoof();
+	Draw440WestRoof();
+
 }
 
 //--------------------------------------------------------------------------------------
@@ -4974,22 +4964,15 @@ void Shay::DisplayBWRoofSouth()
 
 void Shay::DisplayBWRoofEast()
 {
-	step = -35000;
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(ROOF_TOP));
-	glPushMatrix();
-	glTranslatef(step, 0, 0);
-	glCallList(2062);
-	glPopMatrix();
+	glCallList(2310);
 }
 
 void Shay::DisplayBWRoofWest()
 {
 	step = -23000;
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(ROOF_TOP));
-	glPushMatrix();
-	glTranslatef(step, 1000.0, -200);
-	glCallList(215);
-	glPopMatrix();
+	glCallList(2311);
 }
 
 void Shay::Display440RoofNorth()
@@ -5694,12 +5677,12 @@ void Shay::DrawBoardwalk440EastFacadeLedge()
 void Shay::DisplayBoardwalk440CorridorWallEast()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
-	glCallList(2037);
+	glCallList(2300);
 }
 
 void Shay::DrawBoardwalk440CorridorWallEast()
 {
-	tp.CreateDisplayList(XY, 2037, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
+	tp.CreateDisplayList(XY, 2300, 128.0, 128.0, -1192.0, 10000.0, 41160.0, 29.69, 20.71);
 }
 
 //--------------------------------------------------------------------------------------
@@ -5709,12 +5692,12 @@ void Shay::DrawBoardwalk440CorridorWallEast()
 void Shay::DisplayBoardwalk440CorridorWallWest()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
-	glCallList(2038);
+	glCallList(2301);
 }
 
 void Shay::DrawBoardwalk440CorridorWallWest()
 {
-	tp.CreateDisplayList(XY, 2038, 128.0, 128.0, -25029.0, 10000.0, 41027.0, 31.87, 20.71);
+	tp.CreateDisplayList(XY, 2301, 128.0, 128.0, -25029.0, 10000.0, 41027.0, 31.87, 20.71);
 }
 
 //--------------------------------------------------------------------------------------
@@ -5934,16 +5917,16 @@ void Shay::DrawBroadwalkSouthDoors() {
 void Shay::Display440NorthExterior()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_XY));
-	glCallList(2065);
+	glCallList(2320);
 
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(WALL_BRICK_YZ));
-	glCallList(2066);
+	glCallList(2321);
 }
 
 void Shay::Draw440NorthExterior()
 {
-	tp.CreateDisplayList(XY, 2065, 128.0, 128.0, -20952.0, 10000.0, 27334.0, 155.0, 34.32); //north wall
-	tp.CreateDisplayList(YZ, 2066, 128.0, 128.0, -1112.0, 10000.0, 27334.0, 34.32, 32.9375); //east wall
+	tp.CreateDisplayList(XY, 2320, 128.0, 128.0, -20952.0, 10000.0, 27334.0, 155.0, 34.32); //north wall
+	tp.CreateDisplayList(YZ, 2321, 128.0, 128.0, -1112.0, 10000.0, 27334.0, 34.32, 32.9375); //east wall
 }
 
 void Shay::Display440NorthWindows()
@@ -5955,19 +5938,19 @@ void Shay::Display440NorthWindows()
 		{
 			glPushMatrix();
 				glTranslatef(1004*window, 1450*floor, 0);
-				glCallList(2067);
+				glCallList(2330);
 			glPopMatrix();
 		}
 	}
 
 	glPushMatrix();
 		glTranslatef(1004 * -1, 1450 * 2, 0); //top left window
-		glCallList(2067);
+		glCallList(2330);
 	glPopMatrix();
 
 	glPushMatrix();
 		glTranslatef(1004 * 14, 1450 * 2, 0); //top right window
-		glCallList(2067);
+		glCallList(2330);
 	glPopMatrix();
 }
 
@@ -5975,7 +5958,7 @@ void Shay::Draw440NorthWindows()
 {
 	GLdouble windWidth = 460; 
 	GLdouble windHeight = 640;
-	glNewList(2067, GL_COMPILE);
+	glNewList(2330, GL_COMPILE);
 		glBegin(GL_POLYGON);
 			glTexCoord2f(0.0, 0.0); //bottom left
 			glVertex3f(-17500.0, 10500, 31590.0); 
@@ -5985,6 +5968,31 @@ void Shay::Draw440NorthWindows()
 			glVertex3f(-17500.0+windWidth, 10500+windHeight, 31590.0); 
 			glTexCoord2f(1.0, 0.0); //top left
 			glVertex3f(-17500.0, 10500+windHeight, 31590.0);
+		glEnd();
+	glEndList();
+}
+
+void Shay::Draw440EastRoof()
+{
+	glNewList(2310, GL_COMPILE);
+		glBegin(GL_QUADS);
+			glTexCoord2f(0.0, 0.0);
+			glVertex3f(-3260.0, 12564.0, 31550.0);
+			glTexCoord2f(0.0, 257.9);
+			glVertex3f(-3260.0, 12564.0, 31550.0 + 9472.0);
+			glTexCoord2f(2.0, 273.4);
+			glVertex3f(-1152, 13340.72, 31550.0 + 9472.0);
+			glTexCoord2f(2.0, 0.0);
+			glVertex3f(-1152, 13340.72, 31550.0);
+		glEnd();
+	glEndList();
+}
+
+void Shay::Draw440WestRoof()
+{
+	glNewList(2311, GL_COMPILE);
+		glBegin(GL_QUADS);
+			
 		glEnd();
 	glEndList();
 }

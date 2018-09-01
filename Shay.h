@@ -450,6 +450,9 @@ public:
 	void DrawBoardwalk440EastDoors();
 	void DrawBroadwalkSouthDoors();
 
+	void Draw440EastRoof();
+	void Draw440WestRoof();
+
 	//-----------------------------------------------------
 
 	// loads images and creates texture
