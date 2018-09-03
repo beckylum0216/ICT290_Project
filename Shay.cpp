@@ -5,8 +5,18 @@ Shay::Shay() {
 
 }
 
+Shay::~Shay()
+{
+	delete statBase;
+	delete statRing;
+}
+
 void Shay::Init()
 {
+	statRing = new Model("data/handgun.obj");
+	statBase = new Model("data/statue_base.obj");
+	ringTex.LoadTexture("data/handgun.png", 1024, 1024);
+	statTex.LoadTexture("data/Statue.png", 1024, 1024);
 	// settings for glut cylinders
 	glu_cylinder = gluNewQuadric();
 	gluQuadricTexture(glu_cylinder, GL_TRUE);
@@ -79,6 +89,26 @@ void Shay::Draw() {
 
 	glPopMatrix();
 	glDisable (GL_TEXTURE_2D); 
+
+	if (rot < 360)
+	{
+		rot += 0.5;
+	}
+	else
+	{
+		rot = 0;
+	}
+	glPushMatrix();
+	glTranslatef(-6000, 10400, 34000);
+	glScalef(200, 200, 200);
+	glRotatef(rot, 0, 1, 0);
+	statRing->DrawModel(0, 0, 0, ringTex.GetTexture(), 1024, 1024);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-5000, 9800, 34000);
+	glScalef(150, 150, 150);
+	statBase->DrawModel(0, 0, 0, statTex.GetTexture(), 1024, 1024);
+	glPopMatrix();
 }
 
 void Shay::DownKey(unsigned char key, int x, int y) {

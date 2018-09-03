@@ -48,6 +48,12 @@ add_executable(
         texturedPolygons.h
 		Shay.h 
 		Shay.cpp
+		Model.h
+		Model.cpp
+		Texture.h
+		Texture.cpp
+		lodepng.h
+		lodepng.cpp
 		)
 
 #find_file(SDL2_INCLUDE_DIR NAMES SDL.h HINTS SDL2)

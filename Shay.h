@@ -7,6 +7,8 @@
 
 #include "texturedPolygons.h"
 #include "camera.h"
+#include "Model.h"
+#include "Texture.h"
 
 #define PI 3.1415962654
 
@@ -286,6 +288,8 @@ class Shay {
 public:
 	Shay();
 
+	~Shay();
+
 	void Draw();
 
 	void Init();
@@ -466,6 +470,15 @@ public:
 
 	void IncrementFrameCount();
 private:
+
+	//Models and Textures
+	Model * statBase;
+	Model * statRing;
+	Texture ringTex;
+	Texture statTex;
+
+	float rot = 0;
+
 	// varibles used for tarnslating graphics etc
 	GLdouble step, step2, stepLength;
 

@@ -70,13 +70,51 @@ int main(int argc, char **argv)
 //--------------------------------------------------------------------------------------
 void myinit()
 {
-	// set background (sky colour)
-	glClearColor(97.0/255.0, 140.0/255.0, 185.0/255.0, 1.0);
-	
-	// set perpsective
-	gluLookAt(0.0, 1.75, 0.0, 
-		      0.0, 1.75, -1,
-			  0.0f,1.0f,0.0f);
+
+	glClearColor(97.0 / 255.0, 140.0 / 255.0, 185.0 / 255.0, 1.0);
+	glLineWidth(5.0);
+
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glDisable(GL_ALPHA_TEST);
+
+	// Somewhere in the initialization part of your program…
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
+	// Create light components
+	GLfloat ambientLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	GLfloat diffuseLight[] = { 0.8f, 0, 0, 1.0f };
+	GLfloat specularLight[] = { 0, 0, 0.5f, 1.0f };
+	GLfloat position[] = { -5000, 20000, 34000, 1.0f };
+
+	// Assign created components to GL_LIGHT0
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	//Create Camera
+	GLdouble fov = 60;
+	GLdouble aspect = 1;
+	GLdouble nearVal = 0.5;
+	GLdouble farVal = 100;
+
+	gluPerspective(fov, aspect, nearVal, farVal);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glEnable(GL_DEPTH_TEST);
+	gluLookAt(0.0, 1.75, 0.0,
+		0.0, 1.75, -1,
+		0.0f, 1.0f, 0.0f);
 
 }
 
