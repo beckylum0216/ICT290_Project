@@ -277,7 +277,10 @@
 #define BOARDWALK_440_1M_DOOR_XY 228
 #define BOARDWALK_440_1M_DOOR_YZ 229
 
-
+#define BOOKSHOP_DOOR				230
+#define BOOKSHOP_WINDOW_1			231
+#define BOOKSHOP_WINDOW_2			232
+#define BOOKSHOP_WINDOW_3			233
 
 class Shay {
 public:

@@ -1182,11 +1182,24 @@ void Shay::CreateTextures()
 	image = tp.LoadTexture("data/Boardwalk440DoorWestYZ.raw", 640, 320);
 	tp.CreateTexture(BOARDWALK_440_1M_DOOR_YZ, image, 640, 320);
 
+	//Bookshop door
+	image = tp.LoadTexture("data/BookshopDoor.raw", 320, 320);
+	tp.CreateTexture(BOOKSHOP_DOOR, image, 320, 320);
+
+	//Bookshop window 1
+	image = tp.LoadTexture("data/BookshopWindow1.raw", 320, 320);
+	tp.CreateTexture(BOOKSHOP_WINDOW_1, image, 320, 320);
+
+	//Bookshop window 2
+	image = tp.LoadTexture("data/BookshopWindow2.raw", 320, 320);
+	tp.CreateTexture(BOOKSHOP_WINDOW_2, image, 320, 320);
+
+	//Bookshop window 3
+	image = tp.LoadTexture("data/BookshopWindow3.raw", 320, 320);
+	tp.CreateTexture(BOOKSHOP_WINDOW_3, image, 320, 320);
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);	
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
-	
 }
 
 //--------------------------------------------------------------------------------------
@@ -5847,6 +5860,15 @@ void Shay::DisplayBroadwalkSouthDoors() {
 	for (i = 2055; i < 2061; i++) {
 		glCallList(i);
 	}
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOOKSHOP_WINDOW_1));
+	glCallList(2061);
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOOKSHOP_WINDOW_2));
+	glCallList(2062);
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOOKSHOP_DOOR));
+	glCallList(2063);
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(BOOKSHOP_WINDOW_3));
+	glCallList(2064);
 }
 
 void Shay::DrawBroadwalkSouthDoors() {
@@ -5858,6 +5880,11 @@ void Shay::DrawBroadwalkSouthDoors() {
 	tp.CreateDisplayList(XY_FLIP, 2058, 320.0, 640.0, -14950, 10000.0, 42950.0, 1, 1); //Door 4
 	tp.CreateDisplayList(XY_FLIP, 2059, 320.0, 640.0, -12730, 10000.0, 42950.0, 1, 1); //Door 5
 	tp.CreateDisplayList(XY_FLIP, 2060, 320.0, 640.0, -9750, 10000.0, 42950.0, 2, 1); //Door 6
+	tp.CreateDisplayList(XY, 2061, 1520.0, 760.0, -6450, 10000.0, 42950.0, 1, 1); //Bookshop window 1
+	tp.CreateDisplayList(XY, 2062, 1900.0, 760.0, -2650, 10000.0, 42950.0, 1, 1); //Bookshop window 2
+	tp.CreateDisplayList(XY, 2063, 760.0, 760.0, -730, 10000.0, 42950.0, 1, 1);	  //Bookshop doors
+	tp.CreateDisplayList(XY, 2064, 380.0, 760.0, 30, 10000.0, 42950.0, 1, 1);   //Bookshop window 3
+
 }
 
 //--------------------------------------------------------------------------------------
