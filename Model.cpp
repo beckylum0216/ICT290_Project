@@ -251,9 +251,10 @@ void Model::DrawModel(float xOff, float yOff, float zOff, vector<unsigned char> 
 {
 	// Enable the texture for OpenGL.
 	glEnable(GL_TEXTURE_2D);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, 4, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, &temp[0]);
+	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); //GL_NEAREST = no smoothing
+	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	//glTexImage2D(GL_TEXTURE_2D, 0, 4, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, &temp[0]);
+	glBindTexture(GL_TEXTURE_2D, &temp[0]);
 
 	//Loop through the faces and draw vertices, map texture and create normals
 	glBegin(GL_TRIANGLES);
