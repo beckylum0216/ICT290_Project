@@ -5893,13 +5893,13 @@ void Shay::DrawBroadwalkSouthDoors() {
 void Shay::DisplayBoardwalk440WestPavingStairwell()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
-	glCallList(2061);
+	glCallList(2065);
 
 }
 
 void Shay::DrawBoardwalk440WestPavingStairwell()
 {
-	tp.CreateDisplayList(XZ, 2061, 128.0, 256.0, -20952.0 - 1140.0, 10000.0, 40860.0 - 1140.0, 8.91, 4.45);	// 440 west paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2065, 128.0, 256.0, -20952.0 - 1140.0, 10000.0, 40860.0 - 1140.0, 8.91, 4.45);	// 440 west paving closest wall to canteen
 }
 
 //--------------------------------------------------------------------------------------
@@ -5908,13 +5908,13 @@ void Shay::DrawBoardwalk440WestPavingStairwell()
 void Shay::DisplayBoardwalk440EastPavingStairwell()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
-	glCallList(2062);
+	glCallList(2066);
 
 }
 
 void Shay::DrawBoardwalk440EastPavingStairwell()
 {
-	tp.CreateDisplayList(XZ, 2062, 128.0, 256.0, -1192.0, 10000.0, 40860.0 - 1140.0, 8.91, 4.45);	// 440 west paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2066, 128.0, 256.0, -1192.0, 10000.0, 40860.0 - 1140.0, 8.91, 4.45);	// 440 west paving closest wall to canteen
 }
 
 //--------------------------------------------------------------------------------------
@@ -5923,13 +5923,13 @@ void Shay::DrawBoardwalk440EastPavingStairwell()
 void Shay::DisplayBoardwalk440EastLandingStairwell()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
-	glCallList(2063);
+	glCallList(2067);
 
 }
 
 void Shay::DrawBoardwalk440EastLandingStairwell()
 {
-	tp.CreateDisplayList(XZ, 2063, 128.0, 256.0, -1192.0 + 640.0, 10000.0 + 640.0, 40860.0 - 1140.0, 3.56, 4.45);	// 440 west paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2067, 128.0, 256.0, -1192.0 + 640.0, 10000.0 + 640.0, 40860.0 - 1140.0, 3.56, 4.45);	// 440 west paving closest wall to canteen
 }
 
 //--------------------------------------------------------------------------------------
@@ -5938,11 +5938,11 @@ void Shay::DrawBoardwalk440EastLandingStairwell()
 void Shay::DisplayBoardwalk440WestLandingStairwell()
 {
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
-	glCallList(2064);
+	glCallList(2068);
 
 }
 
 void Shay::DrawBoardwalk440WestLandingStairwell()
 {
-	tp.CreateDisplayList(XZ, 2064, 128.0, 256.0, -20952.0 -1140.0 + 64.0, 10000.0 + 640.0, 40860.0 - 1140.0, 3.56, 4.45);	// 440 west paving closest wall to canteen
+	tp.CreateDisplayList(XZ, 2068, 128.0, 256.0, -20952.0 -1140.0 + 64.0, 10000.0 + 640.0, 40860.0 - 1140.0, 3.56, 4.45);	// 440 west paving closest wall to canteen
 }
