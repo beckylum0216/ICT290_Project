@@ -5965,13 +5965,13 @@ void Shay::Draw440NorthWindows()
 	GLdouble windHeight = 640;
 	glNewList(2330, GL_COMPILE);
 		glBegin(GL_POLYGON);
-			glTexCoord2f(0.0, 0.0); //bottom left
-			glVertex3f(-17500.0, 10500, 31590.0); 
 			glTexCoord2f(0.0, 1.0); //bottom right
-			glVertex3f(-17500.0+windWidth, 10500, 31590.0); 
+			glVertex3f(-17500.0, 10500, 31590.0); 
 			glTexCoord2f(1.0, 1.0); //top right
-			glVertex3f(-17500.0+windWidth, 10500+windHeight, 31590.0); 
+			glVertex3f(-17500.0+windWidth, 10500, 31590.0); 
 			glTexCoord2f(1.0, 0.0); //top left
+			glVertex3f(-17500.0+windWidth, 10500+windHeight, 31590.0); 
+			glTexCoord2f(0.0, 0.0); //bottom left
 			glVertex3f(-17500.0, 10500+windHeight, 31590.0);
 		glEnd();
 	glEndList();
