@@ -6038,5 +6038,5 @@ void Shay::Display440WestUpperWall() //across the top of the west balcony, above
 
 void Shay::Draw440WestUpperWall()
 {
-	tp.CreateDisplayList(YZ, 2315, 128, 128, -20952.0, 12650.88, 31550.0, 777.0 / 128, 9472.0 / 128);
+	tp.CreateDisplayList(YZ, 2316, 128, 128, -20952.0, 12650.88, 31550.0, 777.0 / 128, 9472.0 / 128);
 }
