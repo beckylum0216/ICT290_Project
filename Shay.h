@@ -7,6 +7,9 @@
 
 #include "texturedPolygons.h"
 #include "camera.h"
+#include "Model.h"
+#include "Texture.h"
+#include "SDL_mixer.h"
 
 #define PI 3.1415962654
 
@@ -288,6 +291,8 @@ class Shay {
 public:
 	Shay();
 
+	~Shay();
+
 	void Draw();
 
 	void Init();
@@ -377,6 +382,12 @@ public:
 	void Display440EastUpperWall();
 	void Display440WestUpperWall();
 
+	void DisplayBoardwalk440WestPavingStairwell();
+	void DisplayBoardwalk440EastPavingStairwell();
+
+	void DisplayBoardwalk440EastLandingStairwell();
+	void DisplayBoardwalk440WestLandingStairwell();
+
 	//---------------------------------------------------
 
 	// calls functions to create display lists (below)
@@ -458,6 +469,12 @@ public:
 	void Draw440EastUpperWall();
 	void Draw440WestUpperWall();
 
+	void DrawBoardwalk440WestPavingStairwell();
+	void DrawBoardwalk440EastPavingStairwell();
+
+	void DrawBoardwalk440EastLandingStairwell();
+	void DrawBoardwalk440WestLandingStairwell();
+
 	//-----------------------------------------------------
 
 	// loads images and creates texture
@@ -472,6 +489,15 @@ public:
 
 	void IncrementFrameCount();
 private:
+	void StartSong();
+	//Models and Textures
+	Model * statBase;
+	Model * statRing;
+	Texture ringTex;
+	Texture statTex;
+
+	float rot = 0;
+
 	// varibles used for tarnslating graphics etc
 	GLdouble step, step2, stepLength;
 

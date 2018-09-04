@@ -5,8 +5,43 @@ Shay::Shay() {
 
 }
 
+Shay::~Shay()
+{
+	delete statBase;
+	delete statRing;
+}
+
+void Shay::StartSong()
+{
+	const char * filePath = "data/test_song.mp3";
+	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
+	int result = 0;
+	int flags = MIX_INIT_MP3;
+
+	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+		std::cout << "Failed to init SDL" << std::endl;
+		exit(1);
+	}
+
+	if (flags != (result = Mix_Init(flags))) {
+		std::cout << "Could not initialize mixer, result: " << std::endl;
+		std::cout << "Mix_Init: " << Mix_GetError() << std::endl;
+		exit(1);
+	}
+
+	Mix_Music * song = Mix_LoadMUS(filePath);
+	Mix_PlayMusic(song, -1);
+}
+
 void Shay::Init()
 {
+
+
+
+	statRing = new Model("data/handgun.obj");
+	statBase = new Model("data/statue_base.obj");
+	ringTex.LoadTexture("data/handgun.png", 1024, 1024);
+	statTex.LoadTexture("data/Statue.png", 1024, 1024);
 	// settings for glut cylinders
 	glu_cylinder = gluNewQuadric();
 	gluQuadricTexture(glu_cylinder, GL_TRUE);
@@ -39,6 +74,7 @@ void Shay::Init()
 	// load texture images and create display lists
 	CreateTextureList();
 	CreateTextures();
+	StartSong();
 }
 
 void Shay::Draw() {
@@ -79,6 +115,26 @@ void Shay::Draw() {
 
 	glPopMatrix();
 	glDisable (GL_TEXTURE_2D); 
+
+	if (rot < 360)
+	{
+		rot += 0.5;
+	}
+	else
+	{
+		rot = 0;
+	}
+	glPushMatrix();
+	glTranslatef(-6000, 10400, 34000);
+	glScalef(200, 200, 200);
+	glRotatef(rot, 0, 1, 0);
+	statRing->DrawModel(0, 0, 0, ringTex.GetTexture(), 1024, 1024);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-5000, 9800, 34000);
+	glScalef(150, 150, 150);
+	statBase->DrawModel(0, 0, 0, statTex.GetTexture(), 1024, 1024);
+	glPopMatrix();
 }
 
 void Shay::DownKey(unsigned char key, int x, int y) {
@@ -1155,8 +1211,8 @@ void Shay::CreateTextures()
 
 
 	// Tutorial 1 Banner creation
-	image = tp.LoadTexture("data/bannerlossy.raw", 2448, 3264);
-	tp.CreateTexture(THE_BANNER, image, 2448, 3264);
+	image = tp.LoadTexture("data/bannerlossy.raw", 1600, 1066);
+	tp.CreateTexture(THE_BANNER, image, 1600, 1066);
 
 	// Boardwalk Step XY
 	image = tp.LoadTexture("data/boardwalk440StepXY.raw", 64, 128);
@@ -1282,6 +1338,12 @@ void Shay::DrawBackdrop()
 
 	Display440EastUpperWall();
 	Display440WestUpperWall();
+
+	DisplayBoardwalk440WestPavingStairwell();
+	DisplayBoardwalk440EastPavingStairwell();
+
+	DisplayBoardwalk440WestLandingStairwell();
+	DisplayBoardwalk440EastLandingStairwell();
 
 	if (lightsOn) 
 		DisplayLights ();
@@ -2076,8 +2138,8 @@ void Shay::DisplayBanner()
 void Shay::DrawBanner()
 {
 	//tp.CreateDisplayList(XY, 800, 1600.0, 900, -1940, 9995, 10105, 1.0, 1.0);
-//	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
-	tp.CreateDisplayList(XY, 800, 1600, 900, 31760, 10000, 10894, 1, 1);
+	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
+	//tp.CreateDisplayList(XY, 800, 1600, 900, 31760, 10000, 10894, 1, 1);
 }
 
 //--------------------------------------------------------------------------------------
@@ -4878,6 +4940,13 @@ void Shay::CreateTextureList()
 	Draw440EastUpperWall();
 	Draw440WestUpperWall();
 
+	DrawBoardwalk440WestPavingStairwell();
+	DrawBoardwalk440EastPavingStairwell();
+
+	DrawBoardwalk440WestLandingStairwell();
+	DrawBoardwalk440EastLandingStairwell();
+
+
 }
 
 //--------------------------------------------------------------------------------------
@@ -6040,3 +6109,63 @@ void Shay::Draw440WestUpperWall()
 {
 	tp.CreateDisplayList(YZ, 2316, 128, 128, -20952.0, 12650.88, 31550.0, 777.0 / 128, 9472.0 / 128);
 }
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving Stairwell West
+//--------------------------------------------------------------------------------------
+void Shay::DisplayBoardwalk440WestPavingStairwell()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2065);
+
+}
+
+void Shay::DrawBoardwalk440WestPavingStairwell()
+{
+	tp.CreateDisplayList(XZ, 2065, 128.0, 256.0, -20952.0 - 1140.0, 10000.0, 40860.0 - 1140.0, 8.91, 4.45);	// 440 west paving closest wall to canteen
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving Stairwell East
+//--------------------------------------------------------------------------------------
+void Shay::DisplayBoardwalk440EastPavingStairwell()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2066);
+
+}
+
+void Shay::DrawBoardwalk440EastPavingStairwell()
+{
+	tp.CreateDisplayList(XZ, 2066, 128.0, 256.0, -1192.0, 10000.0, 40860.0 - 1140.0, 8.91, 4.45);	// 440 west paving closest wall to canteen
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving Landing East
+//--------------------------------------------------------------------------------------
+void Shay::DisplayBoardwalk440EastLandingStairwell()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2067);
+
+}
+
+void Shay::DrawBoardwalk440EastLandingStairwell()
+{
+	tp.CreateDisplayList(XZ, 2067, 128.0, 256.0, -1192.0 + 640.0, 10000.0 + 640.0, 40860.0 - 1140.0, 3.56, 4.45);	// 440 west paving closest wall to canteen
+}
+
+//--------------------------------------------------------------------------------------
+//  Boardwalk Paving Landing West
+//--------------------------------------------------------------------------------------
+void Shay::DisplayBoardwalk440WestLandingStairwell()
+{
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glCallList(2068);
+
+}
+
+void Shay::DrawBoardwalk440WestLandingStairwell()
+{
+	tp.CreateDisplayList(XZ, 2068, 128.0, 256.0, -20952.0 -1140.0 + 64.0, 10000.0 + 640.0, 40860.0 - 1140.0, 3.56, 4.45);	// 440 west paving closest wall to canteen
+}
+
