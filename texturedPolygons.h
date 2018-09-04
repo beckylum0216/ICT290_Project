@@ -13,6 +13,7 @@
 #include <gl/glut.h>
 #include <stdio.h>	// should really be using c++, but didn't get time to change
 #include <stdlib.h>
+#include "Texture.h"
 
 //--------------------------------------------------------------------------------------
 
@@ -27,6 +28,8 @@ public:
 
 	// returns texture
 	GLuint GetTexture (const int & tempIndex) {return m_texture[tempIndex];}
+
+	void CreateModelTexture(int textureNo, Texture & T, int imgWidth, int imgHeight);
 
 	// loads a raw image file into memory
 	GLubyte* LoadTexture(char *filename, int imgWidth, int imgHeight);

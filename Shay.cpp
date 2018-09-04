@@ -40,8 +40,7 @@ void Shay::Init()
 
 	statRing = new Model("data/handgun.obj");
 	statBase = new Model("data/statue_base.obj");
-	ringTex.LoadTexture("data/handgun.png", 1024, 1024);
-	statTex.LoadTexture("data/Statue.png", 1024, 1024);
+
 	// settings for glut cylinders
 	glu_cylinder = gluNewQuadric();
 	gluQuadricTexture(glu_cylinder, GL_TRUE);
@@ -74,6 +73,8 @@ void Shay::Init()
 	// load texture images and create display lists
 	CreateTextureList();
 	CreateTextures();
+
+
 	StartSong();
 }
 
@@ -114,7 +115,7 @@ void Shay::Draw() {
 		DrawBackdrop();
 
 	glPopMatrix();
-	glDisable (GL_TEXTURE_2D); 
+	 
 
 	if (rot < 360)
 	{
@@ -124,17 +125,22 @@ void Shay::Draw() {
 	{
 		rot = 0;
 	}
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(234));
 	glPushMatrix();
-	glTranslatef(-6000, 10400, 34000);
-	glScalef(200, 200, 200);
-	glRotatef(rot, 0, 1, 0);
-	statRing->DrawModel(0, 0, 0, ringTex.GetTexture(), 1024, 1024);
+		glTranslatef(-6000, 10400, 34000);
+		glScalef(200, 200, 200);
+		glRotatef(rot, 0, 1, 0);
+		statRing->DrawModel(0, 0, 0, tp.GetTexture(234));
 	glPopMatrix();
+
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(235));
 	glPushMatrix();
-	glTranslatef(-5000, 9800, 34000);
-	glScalef(150, 150, 150);
-	statBase->DrawModel(0, 0, 0, statTex.GetTexture(), 1024, 1024);
+		glTranslatef(-5000, 9800, 34000);
+		glScalef(150, 150, 150);
+		statBase->DrawModel(0, 0, 0, tp.GetTexture(235));
 	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
 }
 
 void Shay::DownKey(unsigned char key, int x, int y) {
@@ -1253,6 +1259,13 @@ void Shay::CreateTextures()
 	//Bookshop window 3
 	image = tp.LoadTexture("data/BookshopWindow3.raw", 320, 320);
 	tp.CreateTexture(BOOKSHOP_WINDOW_3, image, 320, 320);
+
+	image = tp.LoadTexture("data/handgun.raw", 1024, 1024);
+	tp.CreateTexture(234, image, 1024, 1024);
+
+	image = tp.LoadTexture("data/Statue.raw", 1024, 1024);
+	tp.CreateTexture(235, image, 1024, 1024);
+
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);	
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -2464,7 +2477,7 @@ void Shay::DrawLibraryPosts ()
 //--------------------------------------------------------------------------------------
 void Shay::DisplayPavement ()
 {
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT_TOP));
 	for (int i = 72; i < 74; i ++) glCallList(i);
 	glCallList(28);
 	for (i = 81; i < 89; i ++) glCallList(i);
@@ -2501,7 +2514,7 @@ void Shay::DisplayPavement ()
 	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENTSIDE_TOP));
 	glCallList(77);
 
-	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT));
+	glBindTexture(GL_TEXTURE_2D, tp.GetTexture(PAVEMENT_16));
 	glCallList(78);
 	glCallList(79);
 

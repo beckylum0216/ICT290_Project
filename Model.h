@@ -65,7 +65,7 @@ public:
 	*@param w width of texture to be drawn
 	*@param h height of texture to be drawn
 	*/
-	void DrawModel(float xOff, float yOff, float zOff, vector<unsigned char> & temp, unsigned int w, unsigned int h);
+	void DrawModel(float xOff, float yOff, float zOff, GLuint tex);
 
 
 	/**

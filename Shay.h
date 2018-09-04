@@ -8,7 +8,6 @@
 #include "texturedPolygons.h"
 #include "camera.h"
 #include "Model.h"
-#include "Texture.h"
 #include "SDL_mixer.h"
 
 #define PI 3.1415962654
@@ -472,11 +471,9 @@ public:
 	void IncrementFrameCount();
 private:
 	void StartSong();
-	//Models and Textures
+	//Models
 	Model * statBase;
 	Model * statRing;
-	Texture ringTex;
-	Texture statTex;
 
 	float rot = 0;
 
