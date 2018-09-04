@@ -7,6 +7,9 @@
 
 #include "texturedPolygons.h"
 #include "camera.h"
+#include "Model.h"
+#include "Texture.h"
+#include "SDL_mixer.h"
 
 #define PI 3.1415962654
 
@@ -274,14 +277,21 @@
 #define BOARDWALK_440_STEP_YZ		225
 #define BOARDWALK_440_STEPTOPSTRIPE_XY 226
 #define BOARDWALK_440_STEPTOPSTRIPE_YZ 227
-#define BOARDWALK_440_1M_DOOR_XY 228
-#define BOARDWALK_440_1M_DOOR_YZ 229
+#define BOARDWALK_440_1M_DOOR_XY	228
+#define BOARDWALK_440_1M_DOOR_YZ	229
 
+#define BOARDWALK_440_WINDOW		230
 
+#define BOOKSHOP_DOOR				231
+#define BOOKSHOP_WINDOW_1			232
+#define BOOKSHOP_WINDOW_2			233
+#define BOOKSHOP_WINDOW_3			234
 
 class Shay {
 public:
 	Shay();
+
+	~Shay();
 
 	void Draw();
 
@@ -360,10 +370,23 @@ public:
 	void DisplayBWRoofSouth();
 	void DisplayBWRoofEast();
 	void DisplayBWRoofWest();
+	void Display440RoofNorth();
+
+	void Display440NorthExterior();
+	void Display440NorthWindows();
 
 	void DisplayBoardwalk440WestDoors();
 	void DisplayBoardwalk440EastDoors();
 	void DisplayBroadwalkSouthDoors();
+
+	void Display440EastUpperWall();
+	void Display440WestUpperWall();
+
+	void DisplayBoardwalk440WestPavingStairwell();
+	void DisplayBoardwalk440EastPavingStairwell();
+
+	void DisplayBoardwalk440EastLandingStairwell();
+	void DisplayBoardwalk440WestLandingStairwell();
 
 	//---------------------------------------------------
 
@@ -433,9 +456,24 @@ public:
 	void DrawBoardwalk440EastStairwell();
 	void DrawBoardwalk440WestStairwell();
 
+	void Draw440RoofNorth();
+	void Draw440NorthExterior();
+	void Draw440NorthWindows();
+
 	void DrawBoardwalk440WestDoors();
 	void DrawBoardwalk440EastDoors();
 	void DrawBroadwalkSouthDoors();
+
+	void Draw440EastRoof();
+	void Draw440WestRoof();
+	void Draw440EastUpperWall();
+	void Draw440WestUpperWall();
+
+	void DrawBoardwalk440WestPavingStairwell();
+	void DrawBoardwalk440EastPavingStairwell();
+
+	void DrawBoardwalk440EastLandingStairwell();
+	void DrawBoardwalk440WestLandingStairwell();
 
 	//-----------------------------------------------------
 
@@ -451,6 +489,15 @@ public:
 
 	void IncrementFrameCount();
 private:
+	void StartSong();
+	//Models and Textures
+	Model * statBase;
+	Model * statRing;
+	Texture ringTex;
+	Texture statTex;
+
+	float rot = 0;
+
 	// varibles used for tarnslating graphics etc
 	GLdouble step, step2, stepLength;
 
