@@ -1185,8 +1185,8 @@ void Shay::CreateTextures()
 
 
 	// Tutorial 1 Banner creation
-	image = tp.LoadTexture("data/bannerlossy.raw", 2448, 3264);
-	tp.CreateTexture(THE_BANNER, image, 2448, 3264);
+	image = tp.LoadTexture("data/bannerlossy.raw", 1600, 1066);
+	tp.CreateTexture(THE_BANNER, image, 1600, 1066);
 
 	// Boardwalk Step XY
 	image = tp.LoadTexture("data/boardwalk440StepXY.raw", 64, 128);
@@ -2109,8 +2109,8 @@ void Shay::DisplayBanner()
 void Shay::DrawBanner()
 {
 	//tp.CreateDisplayList(XY, 800, 1600.0, 900, -1940, 9995, 10105, 1.0, 1.0);
-//	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
-	tp.CreateDisplayList(XY, 800, 1600, 900, 31760, 10000, 10894, 1, 1);
+	tp.CreateDisplayList(XY, 800, 1600-128, 900-128, 31760.0, 10000.0, 10894.0, 1.0, 1.0);	// Banner
+	//tp.CreateDisplayList(XY, 800, 1600, 900, 31760, 10000, 10894, 1, 1);
 }
 
 //--------------------------------------------------------------------------------------
