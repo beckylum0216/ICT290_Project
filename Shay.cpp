@@ -11,8 +11,33 @@ Shay::~Shay()
 	delete statRing;
 }
 
+void Shay::StartSong()
+{
+	const char * filePath = "data/test_song.mp3";
+	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
+	int result = 0;
+	int flags = MIX_INIT_MP3;
+
+	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+		std::cout << "Failed to init SDL" << std::endl;
+		exit(1);
+	}
+
+	if (flags != (result = Mix_Init(flags))) {
+		std::cout << "Could not initialize mixer, result: " << std::endl;
+		std::cout << "Mix_Init: " << Mix_GetError() << std::endl;
+		exit(1);
+	}
+
+	Mix_Music * song = Mix_LoadMUS(filePath);
+	Mix_PlayMusic(song, -1);
+}
+
 void Shay::Init()
 {
+
+
+
 	statRing = new Model("data/handgun.obj");
 	statBase = new Model("data/statue_base.obj");
 	ringTex.LoadTexture("data/handgun.png", 1024, 1024);
@@ -49,6 +74,7 @@ void Shay::Init()
 	// load texture images and create display lists
 	CreateTextureList();
 	CreateTextures();
+	StartSong();
 }
 
 void Shay::Draw() {
