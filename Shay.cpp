@@ -404,10 +404,10 @@ void Shay::CreateBoundingBoxes()
 	cam.SetAABBMinZ(18, 28525.0);
 
 	//440 East wall next to broadwalk
-	/*cam.SetAABBMaxX(19, 0.0);
+	cam.SetAABBMaxX(19, 0.0);
 	cam.SetAABBMinX(19, -1192.0);
-	cam.SetAABBMaxZ(19, 40050.0);
-	cam.SetAABBMinZ(19, 28525.0);*/
+	cam.SetAABBMaxZ(19, 40860.0 - 1140.0);
+	cam.SetAABBMinZ(19, 28525.0);
 
 	//440 North wall next to broadwalk
 	cam.SetAABBMaxX(20, -1192.0);
